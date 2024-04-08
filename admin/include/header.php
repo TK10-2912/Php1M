@@ -6,7 +6,7 @@
 				</a>
 
 			  	<a class="brand" href="index.html">
-			  		Shopping Portal | Admin
+				  TV shopping | Admin
 			  	</a>
 
 				<div class="nav-collapse collapse navbar-inverse-collapse">
@@ -20,9 +20,9 @@
 								<b class="caret"></b>
 							</a>
 							<ul class="dropdown-menu">
-								<li><a href="change-password.php">Change Password</a></li>
+								<li><a href="change-password.php">Thay đổi mật khẩu</a></li>
 								<li class="divider"></li>
-								<li><a href="logout.php">Logout</a></li>
+								<li><a href="logout.php">Đăng xuất</a></li>
 							</ul>
 						</li>
 					</ul>
@@ -30,3 +30,5 @@
 			</div>
 		</div><!-- /navbar-inner -->
 	</div><!-- /navbar -->
+
+	

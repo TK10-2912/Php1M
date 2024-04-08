@@ -184,8 +184,7 @@ if (isset($_POST['login'])) {
 								<input type="password" name="password" class="form-control unicase-form-control text-input" id="exampleInputPassword1">
 							</div>
 							<div class="radio outer-xs">
-								<a href="forgot-password.php" class="forgot-password pull-right">Forgot your
-									Password?</a>
+								<a href="forgot-password.php" class="forgot-password pull-right">Forgot your Password?</a>
 							</div>
 							<button type="submit" class="btn-upper btn btn-primary checkout-page-button" name="login">Login</button>
 						</form>

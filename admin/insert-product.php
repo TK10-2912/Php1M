@@ -42,7 +42,7 @@ if (strlen($_SESSION['alogin']) == 0) {
 	<head>
 		<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 		<meta name="viewport" content="width=device-width, initial-scale=1.0">
-		<title>Admin| Insert Product</title>
+		<title>Admin| Thêm mới sản phẩm</title>
 		<link type="text/css" href="bootstrap/css/bootstrap.min.css" rel="stylesheet">
 		<link type="text/css" href="bootstrap/css/bootstrap-responsive.min.css" rel="stylesheet">
 		<link type="text/css" href="css/theme.css" rel="stylesheet">
@@ -86,14 +86,14 @@ if (strlen($_SESSION['alogin']) == 0) {
 
 							<div class="module">
 								<div class="module-head">
-									<h3>Insert Product</h3>
+									<h3>Thêm mới sản phẩm</h3>
 								</div>
 								<div class="module-body">
 
 									<?php if (isset($_POST['submit'])) { ?>
 										<div class="alert alert-success">
 											<button type="button" class="close" data-dismiss="alert">×</button>
-											<strong>Well done!</strong> <?php echo htmlentities($_SESSION['msg']); ?><?php echo htmlentities($_SESSION['msg'] = ""); ?>
+											<strong>Thành công!</strong> <?php echo htmlentities($_SESSION['msg']); ?><?php echo htmlentities($_SESSION['msg'] = ""); ?>
 										</div>
 									<?php } ?>
 
@@ -101,7 +101,7 @@ if (strlen($_SESSION['alogin']) == 0) {
 									<?php if (isset($_GET['del'])) { ?>
 										<div class="alert alert-error">
 											<button type="button" class="close" data-dismiss="alert">×</button>
-											<strong>Oh snap!</strong> <?php echo htmlentities($_SESSION['delmsg']); ?><?php echo htmlentities($_SESSION['delmsg'] = ""); ?>
+											<strong>Hỏng!</strong> <?php echo htmlentities($_SESSION['delmsg']); ?><?php echo htmlentities($_SESSION['delmsg'] = ""); ?>
 										</div>
 									<?php } ?>
 
@@ -110,10 +110,10 @@ if (strlen($_SESSION['alogin']) == 0) {
 									<form class="form-horizontal row-fluid" name="insertproduct" method="post" enctype="multipart/form-data">
 
 										<div class="control-group">
-											<label class="control-label" for="basicinput">Category</label>
+											<label class="control-label" for="basicinput">Danh mục</label>
 											<div class="controls">
 												<select name="category" class="span8 tip" onChange="getSubcat(this.value);" required>
-													<option value="">Select Category</option>
+													<option value="">Chọn danh mục</option>
 													<?php $query = mysqli_query($con, "select * from category");
 													while ($row = mysqli_fetch_array($query)) { ?>
 
@@ -125,63 +125,61 @@ if (strlen($_SESSION['alogin']) == 0) {
 
 
 										<div class="control-group">
-											<label class="control-label" for="basicinput">Sub Category</label>
+											<label class="control-label" for="basicinput">Danh mục con</label>
 											<div class="controls">
-												<select name="subcategory" id="subcategory" class="span8 tip" required>
-												</select>
+												<select name="subcategory" id="subcategory" class="span8 tip" required></select>
 											</div>
 										</div>
 
 
 										<div class="control-group">
-											<label class="control-label" for="basicinput">Product Name</label>
+											<label class="control-label" for="basicinput">Tên sản phẩm</label>
 											<div class="controls">
-												<input type="text" name="productName" placeholder="Enter Product Name" class="span8 tip" required>
+												<input type="text" name="productName" placeholder="Nhập tên sản phẩm..." class="span8 tip" required>
 											</div>
 										</div>
 
 										<div class="control-group">
-											<label class="control-label" for="basicinput">Product Company</label>
+											<label class="control-label" for="basicinput">Công ty sản xuất</label>
 											<div class="controls">
-												<input type="text" name="productCompany" placeholder="Enter Product Comapny Name" class="span8 tip" required>
+												<input type="text" name="productCompany" placeholder="Nhập tên Công ty sản xuất..." class="span8 tip" required>
 											</div>
 										</div>
 										<div class="control-group">
-											<label class="control-label" for="basicinput">Product Price Before Discount</label>
+											<label class="control-label" for="basicinput">Giá gốc</label>
 											<div class="controls">
-												<input type="text" name="productpricebd" placeholder="Enter Product Price" class="span8 tip" required>
-											</div>
-										</div>
-
-										<div class="control-group">
-											<label class="control-label" for="basicinput">Product Price After Discount(Selling Price)</label>
-											<div class="controls">
-												<input type="text" name="productprice" placeholder="Enter Product Price" class="span8 tip" required>
+												<input type="text" name="productpricebd" placeholder="Nhập giá sản phẩm..." class="span8 tip" required>
 											</div>
 										</div>
 
 										<div class="control-group">
-											<label class="control-label" for="basicinput">Product Description</label>
+											<label class="control-label" for="basicinput">Giá bán (sau khuyến mãi)</label>
 											<div class="controls">
-												<textarea name="productDescription" placeholder="Enter Product Description" rows="6" class="span8 tip">
-</textarea>
+												<input type="text" name="productprice" placeholder="Nhập giá sản phẩm..." class="span8 tip" required>
 											</div>
 										</div>
 
 										<div class="control-group">
-											<label class="control-label" for="basicinput">Product Shipping Charge</label>
+											<label class="control-label" for="basicinput">Mô tả</label>
 											<div class="controls">
-												<input type="text" name="productShippingcharge" placeholder="Enter Product Shipping Charge" class="span8 tip" required>
+												<textarea name="productDescription" placeholder="Nhập mô tả..." rows="6" class="span8 tip"></textarea>
 											</div>
 										</div>
 
 										<div class="control-group">
-											<label class="control-label" for="basicinput">Product Availability</label>
+											<label class="control-label" for="basicinput">Phí vận chuyển sản phẩm</label>
+											<div class="controls">
+												<input type="text" name="productShippingcharge" placeholder="Nhập phí vận chuyển sản phẩm..." class="span8 tip" required>
+											</div>
+										</div>
+
+										<div class="control-group">
+											<label class="control-label" for="basicinput">Trạng thái sản phẩm</label>
 											<div class="controls">
 												<select name="productAvailability" id="productAvailability" class="span8 tip" required>
-													<option value="">Select</option>
-													<option value="In Stock">In Stock</option>
-													<option value="Out of Stock">Out of Stock</option>
+													<option value="">Chọn...</option>
+													<option value="Còn hàng trong kho">Còn hàng trong kho</option>
+													<option value="Hết hàng">Hết hàng</option>
 												</select>
 											</div>
 										</div>
@@ -189,7 +187,7 @@ if (strlen($_SESSION['alogin']) == 0) {
 
 
 										<div class="control-group">
-											<label class="control-label" for="basicinput">Product Image1</label>
+											<label class="control-label" for="basicinput">Ảnh sản phẩm 1</label>
 											<div class="controls">
 												<input type="file" name="productimage1" id="productimage1" value="" class="span8 tip" required>
 											</div>
@@ -197,7 +195,7 @@ if (strlen($_SESSION['alogin']) == 0) {
 
 
 										<div class="control-group">
-											<label class="control-label" for="basicinput">Product Image2</label>
+											<label class="control-label" for="basicinput">Ảnh sản phẩm 2</label>
 											<div class="controls">
 												<input type="file" name="productimage2" class="span8 tip" required>
 											</div>
@@ -206,7 +204,7 @@ if (strlen($_SESSION['alogin']) == 0) {
 
 
 										<div class="control-group">
-											<label class="control-label" for="basicinput">Product Image3</label>
+											<label class="control-label" for="basicinput">Ảnh sản phẩm 3</label>
 											<div class="controls">
 												<input type="file" name="productimage3" class="span8 tip">
 											</div>
@@ -214,16 +212,12 @@ if (strlen($_SESSION['alogin']) == 0) {
 
 										<div class="control-group">
 											<div class="controls">
-												<button type="submit" name="submit" class="btn">Insert</button>
+												<button type="submit" name="submit" class="btn">Thêm mới</button>
 											</div>
 										</div>
 									</form>
 								</div>
 							</div>
-
-
-
-
 
 						</div><!--/.content-->
 					</div><!--/.span9-->
@@ -240,7 +234,16 @@ if (strlen($_SESSION['alogin']) == 0) {
 		<script src="scripts/datatables/jquery.dataTables.js"></script>
 		<script>
 			$(document).ready(function() {
-				$('.datatable-1').dataTable();
+				$('.datatable-1').dataTable({
+					language: {
+						emptyTable: 'Không có dữ liệu',
+						sSearch: 'Tìm kiếm',
+						info: "Hiển thị _START_ - _END_ / Tổng _TOTAL_",
+						infoEmpty: "Hiển thị 0 - 0 / Tổng 0",
+						infoFiltered: "(Lọc từ tổng _MAX_ phần tử)",
+						lengthMenu: "Hiển thị _MENU_ phần tử",
+					}
+				});
 				$('.dataTables_paginate').addClass("btn-group datatable-pagination");
 				$('.dataTables_paginate > a').wrapInner('<span />');
 				$('.dataTables_paginate > a:first-child').append('<i class="icon-chevron-left shaded"></i>');

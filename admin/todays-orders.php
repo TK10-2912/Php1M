@@ -15,7 +15,7 @@ if (strlen($_SESSION['alogin']) == 0) {
 	<head>
 		<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 		<meta name="viewport" content="width=device-width, initial-scale=1.0">
-		<title>Admin| Pending Orders</title>
+		<title>Admin| Đơn đặt hàng trong ngày</title>
 		<link type="text/css" href="bootstrap/css/bootstrap.min.css" rel="stylesheet">
 		<link type="text/css" href="bootstrap/css/bootstrap-responsive.min.css" rel="stylesheet">
 		<link type="text/css" href="css/theme.css" rel="stylesheet">
@@ -45,33 +45,28 @@ if (strlen($_SESSION['alogin']) == 0) {
 
 							<div class="module">
 								<div class="module-head">
-									<h3>Pending Orders</h3>
+									<h3>Đơn đặt hàng trong ngày</h3>
 								</div>
 								<div class="module-body table">
 									<?php if (isset($_GET['del'])) { ?>
 										<div class="alert alert-error">
 											<button type="button" class="close" data-dismiss="alert">×</button>
-											<strong>Oh snap!</strong> <?php echo htmlentities($_SESSION['delmsg']); ?><?php echo htmlentities($_SESSION['delmsg'] = ""); ?>
+											<strong>Hỏng!</strong> <?php echo htmlentities($_SESSION['delmsg']); ?><?php echo htmlentities($_SESSION['delmsg'] = ""); ?>
 										</div>
 									<?php } ?>
-
 									<br />
-
-
-									<table cellpadding="0" cellspacing="0" border="0" class="datatable-1 table table-bordered table-striped	 display table-responsive">
+									<table id="myTable" cellpadding="0" cellspacing="0" border="0" class=" myTable datatable-1 table table-bordered table-striped	 display table-responsive">
 										<thead>
 											<tr>
-												<th>#</th>
-												<th> Name</th>
-												<th width="50">Email /Contact no</th>
-												<th>Shipping Address</th>
-												<th>Product </th>
-												<th>Qty </th>
-												<th>Amount </th>
-												<th>Order Date</th>
-												<th>Action</th>
-
-
+												<th>STT</th>
+												<th>Tên khách hàng</th>
+												<th width="50">Email</th>
+												<th>Địa chỉ đặt hàng</th>
+												<th>Sản phẩm </th>
+												<th>Số lượng</th>
+												<th>Thành tiền </th>
+												<th>Ngày đặt hàng</th>
+												<th></th>
 											</tr>
 										</thead>
 
@@ -95,7 +90,7 @@ if (strlen($_SESSION['alogin']) == 0) {
 													<td><?php echo htmlentities($row['quantity']); ?></td>
 													<td><?php echo htmlentities($row['quantity'] * $row['productprice'] + $row['shippingcharge']); ?></td>
 													<td><?php echo htmlentities($row['orderdate']); ?></td>
-													<td> <a href="updateorder.php?oid=<?php echo htmlentities($row['id']); ?>" title="Update order" target="_blank"><i class="icon-edit"></i></a>
+													<td> <a href="updateorder.php?oid=<?php echo htmlentities($row['id']); ?>" title="Chỉnh sửa" target="_blank"><i class="icon-edit"></i></a>
 													</td>
 												</tr>
 
@@ -123,12 +118,22 @@ if (strlen($_SESSION['alogin']) == 0) {
 		<script src="scripts/datatables/jquery.dataTables.js"></script>
 		<script>
 			$(document).ready(function() {
-				$('.datatable-1').dataTable();
+				$('.datatable-1').dataTable({
+					language: {
+						emptyTable: 'Không có dữ liệu',
+						sSearch: 'Tìm kiếm',
+						info: "Hiển thị _START_ - _END_ / Tổng _TOTAL_",
+						infoEmpty: "Hiển thị 0 - 0 / Tổng 0",
+						infoFiltered: "(Lọc từ tổng _MAX_ phần tử)",
+						lengthMenu: "Hiển thị _MENU_ phần tử",
+					}
+				});
 				$('.dataTables_paginate').addClass("btn-group datatable-pagination");
 				$('.dataTables_paginate > a').wrapInner('<span />');
 				$('.dataTables_paginate > a:first-child').append('<i class="icon-chevron-left shaded"></i>');
 				$('.dataTables_paginate > a:last-child').append('<i class="icon-chevron-right shaded"></i>');
 			});
 		</script>
+
 	</body>
 <?php } ?>

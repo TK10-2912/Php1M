@@ -23,7 +23,7 @@ if (strlen($_SESSION['alogin']) == 0) {
 	<head>
 		<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 		<meta name="viewport" content="width=device-width, initial-scale=1.0">
-		<title>Admin| Edit SubCategory</title>
+		<title>Admin| Chỉnh sửa danh mục con</title>
 		<link type="text/css" href="bootstrap/css/bootstrap.min.css" rel="stylesheet">
 		<link type="text/css" href="bootstrap/css/bootstrap-responsive.min.css" rel="stylesheet">
 		<link type="text/css" href="css/theme.css" rel="stylesheet">
@@ -43,7 +43,7 @@ if (strlen($_SESSION['alogin']) == 0) {
 
 							<div class="module">
 								<div class="module-head">
-									<h3>Edit SubCategory</h3>
+									<h3>Chỉnh sửa danh mục con</h3>
 								</div>
 								<div class="module-body">
 
@@ -65,7 +65,7 @@ if (strlen($_SESSION['alogin']) == 0) {
 										?>
 
 											<div class="control-group">
-												<label class="control-label" for="basicinput">Category</label>
+												<label class="control-label" for="basicinput">Danh mục</label>
 												<div class="controls">
 													<select name="category" class="span8 tip" required>
 														<option value="<?php echo htmlentities($row['id']); ?>"><?php echo htmlentities($catname = $row['categoryName']); ?></option>
@@ -83,13 +83,10 @@ if (strlen($_SESSION['alogin']) == 0) {
 												</div>
 											</div>
 
-
-
-
 											<div class="control-group">
-												<label class="control-label" for="basicinput">SubCategory Name</label>
+												<label class="control-label" for="basicinput">Tên danh mục con</label>
 												<div class="controls">
-													<input type="text" placeholder="Enter category Name" name="subcategory" value="<?php echo  htmlentities($row['subcategory']); ?>" class="span8 tip" required>
+													<input type="text" placeholder="Nhập tên danh mục con..." name="subcategory" value="<?php echo  htmlentities($row['subcategory']); ?>" class="span8 tip" required>
 												</div>
 											</div>
 
@@ -98,7 +95,7 @@ if (strlen($_SESSION['alogin']) == 0) {
 
 										<div class="control-group">
 											<div class="controls">
-												<button type="submit" name="submit" class="btn">Update</button>
+												<button type="submit" name="submit" class="btn">Chỉnh sửa</button>
 											</div>
 										</div>
 									</form>
@@ -125,7 +122,16 @@ if (strlen($_SESSION['alogin']) == 0) {
 		<script src="scripts/datatables/jquery.dataTables.js"></script>
 		<script>
 			$(document).ready(function() {
-				$('.datatable-1').dataTable();
+				$('.datatable-1').dataTable({
+					language: {
+						emptyTable: 'Không có dữ liệu',
+						sSearch: 'Tìm kiếm',
+						info: "Hiển thị _START_ - _END_ / Tổng _TOTAL_",
+						infoEmpty: "Hiển thị 0 - 0 / Tổng 0",
+						infoFiltered: "(Lọc từ tổng _MAX_ phần tử)",
+						lengthMenu: "Hiển thị _MENU_ phần tử",
+					}
+				});
 				$('.dataTables_paginate').addClass("btn-group datatable-pagination");
 				$('.dataTables_paginate > a').wrapInner('<span />');
 				$('.dataTables_paginate > a:first-child').append('<i class="icon-chevron-left shaded"></i>');

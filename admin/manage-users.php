@@ -19,7 +19,7 @@ if (strlen($_SESSION['alogin']) == 0) {
 	<head>
 		<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 		<meta name="viewport" content="width=device-width, initial-scale=1.0">
-		<title>Admin| Manage Users</title>
+		<title>Admin| Quản lý thành viên</title>
 		<link type="text/css" href="bootstrap/css/bootstrap.min.css" rel="stylesheet">
 		<link type="text/css" href="bootstrap/css/bootstrap-responsive.min.css" rel="stylesheet">
 		<link type="text/css" href="css/theme.css" rel="stylesheet">
@@ -39,13 +39,13 @@ if (strlen($_SESSION['alogin']) == 0) {
 
 							<div class="module">
 								<div class="module-head">
-									<h3>Manage Users</h3>
+									<h3>Quản lý thành viên</h3>
 								</div>
 								<div class="module-body table">
 									<?php if (isset($_GET['del'])) { ?>
 										<div class="alert alert-error">
 											<button type="button" class="close" data-dismiss="alert">×</button>
-											<strong>Oh snap!</strong> <?php echo htmlentities($_SESSION['delmsg']); ?><?php echo htmlentities($_SESSION['delmsg'] = ""); ?>
+											<strong>Hỏng!</strong> <?php echo htmlentities($_SESSION['delmsg']); ?><?php echo htmlentities($_SESSION['delmsg'] = ""); ?>
 										</div>
 									<?php } ?>
 
@@ -55,14 +55,12 @@ if (strlen($_SESSION['alogin']) == 0) {
 									<table cellpadding="0" cellspacing="0" border="0" class="datatable-1 table table-bordered table-striped	 display" width="100%">
 										<thead>
 											<tr>
-												<th>#</th>
-												<th> Name</th>
-												<th>Email </th>
-												<th>Contact no</th>
-												<th>Shippping Address/City/State/Pincode </th>
-												<th>Billing Address/City/State/Pincode </th>
-												<th>Reg. Date </th>
-
+												<th>STT</th>
+												<th>Tên thành viên</th>
+												<th>Email</th>
+												<th>SĐT</th>
+												<th>Địa chỉ nhận hàng</th>
+												<th>Ngày tạo</th>
 											</tr>
 										</thead>
 										<tbody>
@@ -77,9 +75,7 @@ if (strlen($_SESSION['alogin']) == 0) {
 													<td><?php echo htmlentities($row['email']); ?></td>
 													<td> <?php echo htmlentities($row['contactno']); ?></td>
 													<td><?php echo htmlentities($row['shippingAddress'] . "," . $row['shippingCity'] . "," . $row['shippingState'] . "-" . $row['shippingPincode']); ?></td>
-													<td><?php echo htmlentities($row['billingAddress'] . "," . $row['billingCity'] . "," . $row['billingState'] . "-" . $row['billingPincode']); ?></td>
 													<td><?php echo htmlentities($row['regDate']); ?></td>
-
 												<?php $cnt = $cnt + 1;
 											} ?>
 
@@ -104,7 +100,16 @@ if (strlen($_SESSION['alogin']) == 0) {
 		<script src="scripts/datatables/jquery.dataTables.js"></script>
 		<script>
 			$(document).ready(function() {
-				$('.datatable-1').dataTable();
+				$('.datatable-1').dataTable({
+					language: {
+						emptyTable: 'Không có dữ liệu',
+						sSearch: 'Tìm kiếm',
+						info: "Hiển thị _START_ - _END_ / Tổng _TOTAL_",
+						infoEmpty: "Hiển thị 0 - 0 / Tổng 0",
+						infoFiltered: "(Lọc từ tổng _MAX_ phần tử)",
+						lengthMenu: "Hiển thị _MENU_ phần tử",
+					}
+				});
 				$('.dataTables_paginate').addClass("btn-group datatable-pagination");
 				$('.dataTables_paginate > a').wrapInner('<span />');
 				$('.dataTables_paginate > a:first-child').append('<i class="icon-chevron-left shaded"></i>');

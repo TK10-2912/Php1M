@@ -32,7 +32,6 @@ if (isset($_POST['submit'])) {
 <head>
 	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<title>Shopping Portal | Admin login</title>
 	<link type="text/css" href="bootstrap/css/bootstrap.min.css" rel="stylesheet">
 	<link type="text/css" href="bootstrap/css/bootstrap-responsive.min.css" rel="stylesheet">
 	<link type="text/css" href="css/theme.css" rel="stylesheet">
@@ -50,28 +49,21 @@ if (isset($_POST['submit'])) {
 				</a>
 
 				<a class="brand" href="index.html">
-					Shopping Portal | Admin
 				</a>
 
 				<div class="nav-collapse collapse navbar-inverse-collapse">
 
 					<ul class="nav pull-right">
-
-						<li><a href="http://localhost/shopping/">
+						<li>
+							<a href="http://localhost/shopping/">
 								Back to Portal
-
-							</a></li>
-
-
-
-
+							</a>
+						</li>
 					</ul>
 				</div><!-- /.nav-collapse -->
 			</div>
 		</div><!-- /navbar-inner -->
 	</div><!-- /navbar -->
-
-
 
 	<div class="wrapper">
 		<div class="container">
@@ -110,12 +102,10 @@ if (isset($_POST['submit'])) {
 
 	<div class="footer">
 		<div class="container">
-
-
-			<b class="copyright">&copy; 2017 Shopping Portal </b> All rights reserved.
 		</div>
 	</div>
 	<script src="scripts/jquery-1.9.1.min.js" type="text/javascript"></script>
 	<script src="scripts/jquery-ui-1.10.1.custom.min.js" type="text/javascript"></script>
 	<script src="bootstrap/js/bootstrap.min.js" type="text/javascript"></script>
+
 </body>

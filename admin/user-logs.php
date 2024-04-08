@@ -12,7 +12,7 @@ if (strlen($_SESSION['alogin']) == 0) {
 	<head>
 		<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 		<meta name="viewport" content="width=device-width, initial-scale=1.0">
-		<title>Admin| Users log</title>
+		<title>Admin| Nhật ký đăng nhập</title>
 		<link type="text/css" href="bootstrap/css/bootstrap.min.css" rel="stylesheet">
 		<link type="text/css" href="bootstrap/css/bootstrap-responsive.min.css" rel="stylesheet">
 		<link type="text/css" href="css/theme.css" rel="stylesheet">
@@ -32,7 +32,7 @@ if (strlen($_SESSION['alogin']) == 0) {
 
 							<div class="module">
 								<div class="module-head">
-									<h3>Manage Users</h3>
+									<h3>Quản lý nhật ký đăng nhập</h3>
 								</div>
 								<div class="module-body table">
 
@@ -40,13 +40,12 @@ if (strlen($_SESSION['alogin']) == 0) {
 									<table cellpadding="0" cellspacing="0" border="0" class="datatable-1 table table-bordered table-striped	 display" width="100%">
 										<thead>
 											<tr>
-												<th>#</th>
-												<th> User Email</th>
-												<th>User IP </th>
-												<th>Login Time</th>
-												<th>Logout Time </th>
-												<th>Status </th>
-
+												<th>STT</th>
+												<th>Email</th>
+												<th>Địa chỉ IP</th>
+												<th>Thời gian đăng nhập</th>
+												<th>Thời gian đăng xuất</th>
+												<th>Trạng thái</th>
 											</tr>
 										</thead>
 										<tbody>
@@ -95,7 +94,16 @@ if (strlen($_SESSION['alogin']) == 0) {
 		<script src="scripts/datatables/jquery.dataTables.js"></script>
 		<script>
 			$(document).ready(function() {
-				$('.datatable-1').dataTable();
+				$('.datatable-1').dataTable({
+					language: {
+						emptyTable: 'Không có dữ liệu',
+						sSearch: 'Tìm kiếm',
+						info: "Hiển thị _START_ - _END_ / Tổng _TOTAL_",
+						infoEmpty: "Hiển thị 0 - 0 / Tổng 0",
+						infoFiltered: "(Lọc từ tổng _MAX_ phần tử)",
+						lengthMenu: "Hiển thị _MENU_ phần tử",
+					}
+				});
 				$('.dataTables_paginate').addClass("btn-group datatable-pagination");
 				$('.dataTables_paginate > a').wrapInner('<span />');
 				$('.dataTables_paginate > a:first-child').append('<i class="icon-chevron-left shaded"></i>');
