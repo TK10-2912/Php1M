@@ -1,6 +1,6 @@
 <?php
 session_start();
-include('include/config.php');
+include ('include/config.php');
 if (strlen($_SESSION['alogin']) == 0) {
 	header('location:index.php');
 } else {
@@ -16,7 +16,7 @@ if (strlen($_SESSION['alogin']) == 0) {
 		$_SESSION['delmsg'] = "SubCategory deleted !!";
 	}
 
-?>
+	?>
 	<!DOCTYPE html>
 	<html lang="en">
 
@@ -28,16 +28,17 @@ if (strlen($_SESSION['alogin']) == 0) {
 		<link type="text/css" href="bootstrap/css/bootstrap-responsive.min.css" rel="stylesheet">
 		<link type="text/css" href="css/theme.css" rel="stylesheet">
 		<link type="text/css" href="images/icons/css/font-awesome.css" rel="stylesheet">
-		<link type="text/css" href='http://fonts.googleapis.com/css?family=Open+Sans:400italic,600italic,400,600' rel='stylesheet'>
+		<link type="text/css" href='http://fonts.googleapis.com/css?family=Open+Sans:400italic,600italic,400,600'
+			rel='stylesheet'>
 	</head>
 
 	<body>
-		<?php include('include/header.php'); ?>
+		<?php include ('include/header.php'); ?>
 
 		<div class="wrapper">
 			<div class="container">
 				<div class="row">
-					<?php include('include/sidebar.php'); ?>
+					<?php include ('include/sidebar.php'); ?>
 					<div class="span9">
 						<div class="content">
 
@@ -50,7 +51,9 @@ if (strlen($_SESSION['alogin']) == 0) {
 									<?php if (isset($_POST['submit'])) { ?>
 										<div class="alert alert-success">
 											<button type="button" class="close" data-dismiss="alert">×</button>
-											<strong>Thành công!</strong> <?php echo htmlentities($_SESSION['msg']); ?><?php echo htmlentities($_SESSION['msg'] = ""); ?>
+											<strong>Thành công!</strong>
+											<?php echo htmlentities($_SESSION['msg']); ?>
+											<?php echo htmlentities($_SESSION['msg'] = ""); ?>
 										</div>
 									<?php } ?>
 
@@ -58,7 +61,9 @@ if (strlen($_SESSION['alogin']) == 0) {
 									<?php if (isset($_GET['del'])) { ?>
 										<div class="alert alert-error">
 											<button type="button" class="close" data-dismiss="alert">×</button>
-											<strong>Hỏng!</strong> <?php echo htmlentities($_SESSION['delmsg']); ?><?php echo htmlentities($_SESSION['delmsg'] = ""); ?>
+											<strong>Hỏng!</strong>
+											<?php echo htmlentities($_SESSION['delmsg']); ?>
+											<?php echo htmlentities($_SESSION['delmsg'] = ""); ?>
 										</div>
 									<?php } ?>
 
@@ -74,7 +79,9 @@ if (strlen($_SESSION['alogin']) == 0) {
 													<?php $query = mysqli_query($con, "select * from category");
 													while ($row = mysqli_fetch_array($query)) { ?>
 
-														<option value="<?php echo $row['id']; ?>"><?php echo $row['categoryName']; ?></option>
+														<option value="<?php echo $row['id']; ?>">
+															<?php echo $row['categoryName']; ?>
+														</option>
 													<?php } ?>
 												</select>
 											</div>
@@ -84,7 +91,8 @@ if (strlen($_SESSION['alogin']) == 0) {
 										<div class="control-group">
 											<label class="control-label" for="basicinput">Tên danh mục con</label>
 											<div class="controls">
-												<input type="text" placeholder="Nhập tên danh mục con..." name="subcategory" class="span8 tip" required>
+												<input type="text" placeholder="Nhập tên danh mục con..." name="subcategory"
+													class="span8 tip" required>
 											</div>
 										</div>
 
@@ -105,7 +113,8 @@ if (strlen($_SESSION['alogin']) == 0) {
 									<h3>Quản lý danh mục con</h3>
 								</div>
 								<div class="module-body table">
-									<table cellpadding="0" cellspacing="0" border="0" class="datatable-1 table table-bordered table-striped	 display" width="100%">
+									<table cellpadding="0" cellspacing="0" border="0"
+										class="datatable-1 table table-bordered table-striped	 display" width="100%">
 										<thead>
 											<tr>
 												<th>STT</th>
@@ -121,7 +130,7 @@ if (strlen($_SESSION['alogin']) == 0) {
 											<?php $query = mysqli_query($con, "select subcategory.id,category.categoryName,subcategory.subcategory,subcategory.creationDate,subcategory.updationDate from subcategory join category on category.id=subcategory.categoryid");
 											$cnt = 1;
 											while ($row = mysqli_fetch_array($query)) {
-											?>
+												?>
 												<tr>
 													<td><?php echo htmlentities($cnt); ?></td>
 													<td><?php echo htmlentities($row['categoryName']); ?></td>
@@ -129,11 +138,14 @@ if (strlen($_SESSION['alogin']) == 0) {
 													<td> <?php echo htmlentities($row['creationDate']); ?></td>
 													<td><?php echo htmlentities($row['updationDate']); ?></td>
 													<td>
-														<a href="edit-subcategory.php?id=<?php echo $row['id'] ?>"><i class="icon-edit"></i></a>
-														<a href="subcategory.php?id=<?php echo $row['id'] ?>&del=delete" onClick="return confirm('Are you sure you want to delete?')"><i class="icon-remove-sign"></i></a>
+														<a href="edit-subcategory.php?id=<?php echo $row['id'] ?>"><i
+																class="icon-edit"></i></a>
+														<a href="subcategory.php?id=<?php echo $row['id'] ?>&del=delete"
+															onClick="return confirm('Are you sure you want to delete?')"><i
+																class="icon-remove-sign"></i></a>
 													</td>
 												</tr>
-											<?php $cnt = $cnt + 1;
+												<?php $cnt = $cnt + 1;
 											} ?>
 
 									</table>
@@ -148,7 +160,7 @@ if (strlen($_SESSION['alogin']) == 0) {
 			</div><!--/.container-->
 		</div><!--/.wrapper-->
 
-		<?php include('include/footer.php'); ?>
+		<?php include ('include/footer.php'); ?>
 
 		<script src="scripts/jquery-1.9.1.min.js" type="text/javascript"></script>
 		<script src="scripts/jquery-ui-1.10.1.custom.min.js" type="text/javascript"></script>
@@ -156,7 +168,7 @@ if (strlen($_SESSION['alogin']) == 0) {
 		<script src="scripts/flot/jquery.flot.js" type="text/javascript"></script>
 		<script src="scripts/datatables/jquery.dataTables.js"></script>
 		<script>
-			$(document).ready(function() {
+			$(document).ready(function () {
 				$('.datatable-1').dataTable({
 					language: {
 						emptyTable: 'Không có dữ liệu',

@@ -1,6 +1,6 @@
 <?php
 session_start();
-include('include/config.php');
+include ('include/config.php');
 if (strlen($_SESSION['alogin']) == 0) {
 	header('location:index.php');
 } else {
@@ -12,7 +12,7 @@ if (strlen($_SESSION['alogin']) == 0) {
 		$_SESSION['delmsg'] = "Product deleted !!";
 	}
 
-?>
+	?>
 	<!DOCTYPE html>
 	<html lang="en">
 
@@ -24,16 +24,17 @@ if (strlen($_SESSION['alogin']) == 0) {
 		<link type="text/css" href="bootstrap/css/bootstrap-responsive.min.css" rel="stylesheet">
 		<link type="text/css" href="css/theme.css" rel="stylesheet">
 		<link type="text/css" href="images/icons/css/font-awesome.css" rel="stylesheet">
-		<link type="text/css" href='http://fonts.googleapis.com/css?family=Open+Sans:400italic,600italic,400,600' rel='stylesheet'>
+		<link type="text/css" href='http://fonts.googleapis.com/css?family=Open+Sans:400italic,600italic,400,600'
+			rel='stylesheet'>
 	</head>
 
 	<body>
-		<?php include('include/header.php'); ?>
+		<?php include ('include/header.php'); ?>
 
 		<div class="wrapper">
 			<div class="container">
 				<div class="row">
-					<?php include('include/sidebar.php'); ?>
+					<?php include ('include/sidebar.php'); ?>
 					<div class="span9">
 						<div class="content">
 
@@ -45,14 +46,16 @@ if (strlen($_SESSION['alogin']) == 0) {
 									<?php if (isset($_GET['del'])) { ?>
 										<div class="alert alert-error">
 											<button type="button" class="close" data-dismiss="alert">×</button>
-											<strong>Hỏng!</strong> <?php echo htmlentities($_SESSION['delmsg']); ?><?php echo htmlentities($_SESSION['delmsg'] = ""); ?>
+											<strong>Hỏng!</strong>
+											<?php echo htmlentities($_SESSION['delmsg']); ?>		<?php echo htmlentities($_SESSION['delmsg'] = ""); ?>
 										</div>
 									<?php } ?>
 
 									<br />
 
 
-									<table cellpadding="0" cellspacing="0" border="0" class="datatable-1 table table-bordered table-striped	 display" width="100%">
+									<table cellpadding="0" cellspacing="0" border="0"
+										class="datatable-1 table table-bordered table-striped	 display" width="100%">
 										<thead>
 											<tr>
 												<th>STT</th>
@@ -68,15 +71,16 @@ if (strlen($_SESSION['alogin']) == 0) {
 											<?php $query = mysqli_query($con, "select * from users");
 											$cnt = 1;
 											while ($row = mysqli_fetch_array($query)) {
-											?>
+												?>
 												<tr>
 													<td><?php echo htmlentities($cnt); ?></td>
 													<td><?php echo htmlentities($row['name']); ?></td>
 													<td><?php echo htmlentities($row['email']); ?></td>
 													<td> <?php echo htmlentities($row['contactno']); ?></td>
-													<td><?php echo htmlentities($row['shippingAddress'] . "," . $row['shippingCity'] . "," . $row['shippingState'] . "-" . $row['shippingPincode']); ?></td>
+													<td><?php echo htmlentities($row['shippingAddress'] . "," . $row['shippingCity'] . "," . $row['shippingState'] . "-" . $row['shippingPincode']); ?>
+													</td>
 													<td><?php echo htmlentities($row['regDate']); ?></td>
-												<?php $cnt = $cnt + 1;
+													<?php $cnt = $cnt + 1;
 											} ?>
 
 									</table>
@@ -91,7 +95,7 @@ if (strlen($_SESSION['alogin']) == 0) {
 			</div><!--/.container-->
 		</div><!--/.wrapper-->
 
-		<?php include('include/footer.php'); ?>
+		<?php include ('include/footer.php'); ?>
 
 		<script src="scripts/jquery-1.9.1.min.js" type="text/javascript"></script>
 		<script src="scripts/jquery-ui-1.10.1.custom.min.js" type="text/javascript"></script>
@@ -99,7 +103,7 @@ if (strlen($_SESSION['alogin']) == 0) {
 		<script src="scripts/flot/jquery.flot.js" type="text/javascript"></script>
 		<script src="scripts/datatables/jquery.dataTables.js"></script>
 		<script>
-			$(document).ready(function() {
+			$(document).ready(function () {
 				$('.datatable-1').dataTable({
 					language: {
 						emptyTable: 'Không có dữ liệu',

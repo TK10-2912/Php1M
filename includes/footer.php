@@ -9,22 +9,20 @@
                             <div class="logo">
                                 <a href="index.php">
 
-                                    <h3>Shopping Portal</h3>
+                                    <h3>Trang chủ</h3>
                                 </a>
                             </div><!-- /.logo -->
 
                         </div><!-- /.footer-logo -->
 
                         <div class="module-body m-t-20">
-                            <p class="about-us"> Nam libero tempore, cum soluta nobis est ses eligendi optio cumque cum soluta nobis est ses eligendi optio cumque.</p>
-
+                            <p class="about-us">Khách hàng là thượng đế</p>
                             <div class="social-icons">
-
-                                <a href="http://facebook.com/Digihand.India" class='active'><i class="icon fa fa-facebook"></i></a>
-                                <a href="#"><i class="icon fa fa-twitter"></i></a>
-                                <a href="#"><i class="icon fa fa-linkedin"></i></a>
-                                <a href="#"><i class="icon fa fa-rss"></i></a>
-                                <a href="#"><i class="icon fa fa-pinterest"></i></a>
+                                <a href="https://facebook.com/" class='active'><i class="icon fa fa-facebook"></i></a>
+                                <a href="https://twitter.com/"><i class="icon fa fa-twitter"></i></a>
+                                <a href="https://linkedin.com/"><i class="icon fa fa-linkedin"></i></a>
+                                <a href="https://rss.com/"><i class="icon fa fa-rss"></i></a>
+                                <a href="https://pinterest.com/"><i class="icon fa fa-pinterest"></i></a>
 
                             </div><!-- /.social-icons -->
                         </div><!-- /.module-body -->
@@ -37,7 +35,7 @@
                     <!-- ============================================================= CONTACT TIMING============================================================= -->
                     <div class="contact-timing">
                         <div class="module-heading">
-                            <h4 class="module-title">opening time</h4>
+                            <h4 class="module-title">giờ mở cửa</h4>
                         </div><!-- /.module-heading -->
 
                         <div class="module-body outer-top-xs">
@@ -45,16 +43,16 @@
                                 <table class="table">
                                     <tbody>
                                         <tr>
-                                            <td>Monday-Friday:</td>
-                                            <td class="pull-right">08.00 To 18.00</td>
+                                            <td>Thứ 2 - Thứ 6</td>
+                                            <td class="pull-right">08.00 - 18.00</td>
                                         </tr>
                                         <tr>
-                                            <td>Saturday:</td>
-                                            <td class="pull-right">09.00 To 20.00</td>
+                                            <td>Thứ 7:</td>
+                                            <td class="pull-right">09.00 - 20.00</td>
                                         </tr>
                                         <tr>
-                                            <td>Sunday:</td>
-                                            <td class="pull-right">10.00 To 20.00</td>
+                                            <td>Chủ nhật:</td>
+                                            <td class="pull-right">10.00 - 20.00</td>
                                         </tr>
                                     </tbody>
                                 </table>
@@ -68,7 +66,7 @@
                     <!-- ============================================================= INFORMATION============================================================= -->
                     <div class="contact-information">
                         <div class="module-heading">
-                            <h4 class="module-title">information</h4>
+                            <h4 class="module-title">Thông tin</h4>
                         </div><!-- /.module-heading -->
 
                         <div class="module-body outer-top-xs">
@@ -81,7 +79,7 @@
                                         </span>
                                     </div>
                                     <div class="media-body">
-                                        <p>Pune</p>
+                                        <p>Hà nội</p>
                                     </div>
                                 </li>
 
@@ -93,7 +91,7 @@
                                         </span>
                                     </div>
                                     <div class="media-body">
-                                        <p>80-585960-08<br>9-00-1234-321</p>
+                                        <p>0132465798</p>
                                     </div>
                                 </li>
 

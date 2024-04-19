@@ -1,6 +1,6 @@
 <?php
 session_start();
-include('include/config.php');
+include ('include/config.php');
 if (strlen($_SESSION['alogin']) == 0) {
 	header('location:index.php');
 } else {
@@ -35,7 +35,7 @@ if (strlen($_SESSION['alogin']) == 0) {
 	}
 
 
-?>
+	?>
 	<!DOCTYPE html>
 	<html lang="en">
 
@@ -47,7 +47,8 @@ if (strlen($_SESSION['alogin']) == 0) {
 		<link type="text/css" href="bootstrap/css/bootstrap-responsive.min.css" rel="stylesheet">
 		<link type="text/css" href="css/theme.css" rel="stylesheet">
 		<link type="text/css" href="images/icons/css/font-awesome.css" rel="stylesheet">
-		<link type="text/css" href='http://fonts.googleapis.com/css?family=Open+Sans:400italic,600italic,400,600' rel='stylesheet'>
+		<link type="text/css" href='http://fonts.googleapis.com/css?family=Open+Sans:400italic,600italic,400,600'
+			rel='stylesheet'>
 		<script src="http://js.nicedit.com/nicEdit-latest.js" type="text/javascript"></script>
 		<script type="text/javascript">
 			bkLib.onDomLoaded(nicEditors.allTextAreas);
@@ -59,7 +60,7 @@ if (strlen($_SESSION['alogin']) == 0) {
 					type: "POST",
 					url: "get_subcat.php",
 					data: 'cat_id=' + val,
-					success: function(data) {
+					success: function (data) {
 						$("#subcategory").html(data);
 					}
 				});
@@ -75,12 +76,12 @@ if (strlen($_SESSION['alogin']) == 0) {
 	</head>
 
 	<body>
-		<?php include('include/header.php'); ?>
+		<?php include ('include/header.php'); ?>
 
 		<div class="wrapper">
 			<div class="container">
 				<div class="row">
-					<?php include('include/sidebar.php'); ?>
+					<?php include ('include/sidebar.php'); ?>
 					<div class="span9">
 						<div class="content">
 
@@ -93,7 +94,9 @@ if (strlen($_SESSION['alogin']) == 0) {
 									<?php if (isset($_POST['submit'])) { ?>
 										<div class="alert alert-success">
 											<button type="button" class="close" data-dismiss="alert">×</button>
-											<strong>Thành công!</strong> <?php echo htmlentities($_SESSION['msg']); ?><?php echo htmlentities($_SESSION['msg'] = ""); ?>
+											<strong>Thành công!</strong>
+											<?php echo htmlentities($_SESSION['msg']); ?>
+											<?php echo htmlentities($_SESSION['msg'] = ""); ?>
 										</div>
 									<?php } ?>
 
@@ -101,23 +104,29 @@ if (strlen($_SESSION['alogin']) == 0) {
 									<?php if (isset($_GET['del'])) { ?>
 										<div class="alert alert-error">
 											<button type="button" class="close" data-dismiss="alert">×</button>
-											<strong>Hỏng!</strong> <?php echo htmlentities($_SESSION['delmsg']); ?><?php echo htmlentities($_SESSION['delmsg'] = ""); ?>
+											<strong>Hỏng!</strong>
+											<?php echo htmlentities($_SESSION['delmsg']); ?>
+											<?php echo htmlentities($_SESSION['delmsg'] = ""); ?>
 										</div>
 									<?php } ?>
 
 									<br />
 
-									<form class="form-horizontal row-fluid" name="insertproduct" method="post" enctype="multipart/form-data">
+									<form class="form-horizontal row-fluid" name="insertproduct" method="post"
+										enctype="multipart/form-data">
 
 										<div class="control-group">
 											<label class="control-label" for="basicinput">Danh mục</label>
 											<div class="controls">
-												<select name="category" class="span8 tip" onChange="getSubcat(this.value);" required>
+												<select name="category" class="span8 tip" onChange="getSubcat(this.value);"
+													required>
 													<option value="">Chọn danh mục</option>
 													<?php $query = mysqli_query($con, "select * from category");
 													while ($row = mysqli_fetch_array($query)) { ?>
 
-														<option value="<?php echo $row['id']; ?>"><?php echo $row['categoryName']; ?></option>
+														<option value="<?php echo $row['id']; ?>">
+															<?php echo $row['categoryName']; ?>
+														</option>
 													<?php } ?>
 												</select>
 											</div>
@@ -127,7 +136,8 @@ if (strlen($_SESSION['alogin']) == 0) {
 										<div class="control-group">
 											<label class="control-label" for="basicinput">Danh mục con</label>
 											<div class="controls">
-												<select name="subcategory" id="subcategory" class="span8 tip" required></select>
+												<select name="subcategory" id="subcategory" class="span8 tip"
+													required></select>
 											</div>
 										</div>
 
@@ -135,48 +145,56 @@ if (strlen($_SESSION['alogin']) == 0) {
 										<div class="control-group">
 											<label class="control-label" for="basicinput">Tên sản phẩm</label>
 											<div class="controls">
-												<input type="text" name="productName" placeholder="Nhập tên sản phẩm..." class="span8 tip" required>
+												<input type="text" name="productName" placeholder="Nhập tên sản phẩm..."
+													class="span8 tip" required>
 											</div>
 										</div>
 
 										<div class="control-group">
 											<label class="control-label" for="basicinput">Công ty sản xuất</label>
 											<div class="controls">
-												<input type="text" name="productCompany" placeholder="Nhập tên Công ty sản xuất..." class="span8 tip" required>
+												<input type="text" name="productCompany"
+													placeholder="Nhập tên Công ty sản xuất..." class="span8 tip" required>
 											</div>
 										</div>
 										<div class="control-group">
 											<label class="control-label" for="basicinput">Giá gốc</label>
 											<div class="controls">
-												<input type="text" name="productpricebd" placeholder="Nhập giá sản phẩm..." class="span8 tip" required>
+												<input type="text" name="productpricebd" placeholder="Nhập giá sản phẩm..."
+													class="span8 tip" required>
 											</div>
 										</div>
 
 										<div class="control-group">
 											<label class="control-label" for="basicinput">Giá bán (sau khuyến mãi)</label>
 											<div class="controls">
-												<input type="text" name="productprice" placeholder="Nhập giá sản phẩm..." class="span8 tip" required>
+												<input type="text" name="productprice" placeholder="Nhập giá sản phẩm..."
+													class="span8 tip" required>
 											</div>
 										</div>
 
 										<div class="control-group">
 											<label class="control-label" for="basicinput">Mô tả</label>
 											<div class="controls">
-												<textarea name="productDescription" placeholder="Nhập mô tả..." rows="6" class="span8 tip"></textarea>
+												<textarea name="productDescription" placeholder="Nhập mô tả..." rows="6"
+													class="span8 tip"></textarea>
 											</div>
 										</div>
 
 										<div class="control-group">
 											<label class="control-label" for="basicinput">Phí vận chuyển sản phẩm</label>
 											<div class="controls">
-												<input type="text" name="productShippingcharge" placeholder="Nhập phí vận chuyển sản phẩm..." class="span8 tip" required>
+												<input type="text" name="productShippingcharge"
+													placeholder="Nhập phí vận chuyển sản phẩm..." class="span8 tip"
+													required>
 											</div>
 										</div>
 
 										<div class="control-group">
 											<label class="control-label" for="basicinput">Trạng thái sản phẩm</label>
 											<div class="controls">
-												<select name="productAvailability" id="productAvailability" class="span8 tip" required>
+												<select name="productAvailability" id="productAvailability"
+													class="span8 tip" required>
 													<option value="">Chọn...</option>
 													<option value="Còn hàng trong kho">Còn hàng trong kho</option>
 													<option value="Hết hàng">Hết hàng</option>
@@ -189,7 +207,8 @@ if (strlen($_SESSION['alogin']) == 0) {
 										<div class="control-group">
 											<label class="control-label" for="basicinput">Ảnh sản phẩm 1</label>
 											<div class="controls">
-												<input type="file" name="productimage1" id="productimage1" value="" class="span8 tip" required>
+												<input type="file" name="productimage1" id="productimage1" value=""
+													class="span8 tip" required>
 											</div>
 										</div>
 
@@ -225,7 +244,7 @@ if (strlen($_SESSION['alogin']) == 0) {
 			</div><!--/.container-->
 		</div><!--/.wrapper-->
 
-		<?php include('include/footer.php'); ?>
+		<?php include ('include/footer.php'); ?>
 
 		<script src="scripts/jquery-1.9.1.min.js" type="text/javascript"></script>
 		<script src="scripts/jquery-ui-1.10.1.custom.min.js" type="text/javascript"></script>
@@ -233,7 +252,7 @@ if (strlen($_SESSION['alogin']) == 0) {
 		<script src="scripts/flot/jquery.flot.js" type="text/javascript"></script>
 		<script src="scripts/datatables/jquery.dataTables.js"></script>
 		<script>
-			$(document).ready(function() {
+			$(document).ready(function () {
 				$('.datatable-1').dataTable({
 					language: {
 						emptyTable: 'Không có dữ liệu',

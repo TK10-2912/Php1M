@@ -16,7 +16,7 @@ if (strlen($_SESSION['alogin']) == 0) {
     //}
   }
 
-?>
+  ?>
   <script language="javascript" type="text/javascript">
     function f2() {
       window.close();
@@ -27,7 +27,8 @@ if (strlen($_SESSION['alogin']) == 0) {
       window.print();
     }
   </script>
-  <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+  <!DOCTYPE html
+    PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
   <html xmlns="http://www.w3.org/1999/xhtml">
 
   <head>
@@ -56,7 +57,7 @@ if (strlen($_SESSION['alogin']) == 0) {
           <?php
           $ret = mysqli_query($con, "SELECT * FROM ordertrackhistory WHERE orderId='$oid'");
           while ($row = mysqli_fetch_array($ret)) {
-          ?>
+            ?>
 
 
 
@@ -116,8 +117,10 @@ if (strlen($_SESSION['alogin']) == 0) {
             </tr>
             <tr>
               <td class="fontkink"> </td>
-              <td class="fontkink"> <input type="submit" name="submit2" value="update" size="40" style="cursor: pointer;" /> &nbsp;&nbsp;
-                <input name="Submit2" type="submit" class="txtbox4" value="Close this Window " onClick="return f2();" style="cursor: pointer;" />
+              <td class="fontkink"> <input type="submit" name="submit2" value="update" size="40" style="cursor: pointer;" />
+                &nbsp;&nbsp;
+                <input name="Submit2" type="submit" class="txtbox4" value="Close this Window " onClick="return f2();"
+                  style="cursor: pointer;" />
               </td>
             </tr>
           <?php } ?>

@@ -1,6 +1,6 @@
 <?php
 session_start();
-include('include/config.php');
+include ('include/config.php');
 if (strlen($_SESSION['alogin']) == 0) {
 	header('location:index.php');
 } else {
@@ -19,7 +19,7 @@ if (strlen($_SESSION['alogin']) == 0) {
 	}
 
 
-?>
+	?>
 	<!DOCTYPE html>
 	<html lang="en">
 
@@ -31,7 +31,8 @@ if (strlen($_SESSION['alogin']) == 0) {
 		<link type="text/css" href="bootstrap/css/bootstrap-responsive.min.css" rel="stylesheet">
 		<link type="text/css" href="css/theme.css" rel="stylesheet">
 		<link type="text/css" href="images/icons/css/font-awesome.css" rel="stylesheet">
-		<link type="text/css" href='http://fonts.googleapis.com/css?family=Open+Sans:400italic,600italic,400,600' rel='stylesheet'>
+		<link type="text/css" href='http://fonts.googleapis.com/css?family=Open+Sans:400italic,600italic,400,600'
+			rel='stylesheet'>
 		<script src="http://js.nicedit.com/nicEdit-latest.js" type="text/javascript"></script>
 		<script type="text/javascript">
 			bkLib.onDomLoaded(nicEditors.allTextAreas);
@@ -43,7 +44,7 @@ if (strlen($_SESSION['alogin']) == 0) {
 					type: "POST",
 					url: "get_subcat.php",
 					data: 'cat_id=' + val,
-					success: function(data) {
+					success: function (data) {
 						$("#subcategory").html(data);
 					}
 				});
@@ -59,12 +60,12 @@ if (strlen($_SESSION['alogin']) == 0) {
 	</head>
 
 	<body>
-		<?php include('include/header.php'); ?>
+		<?php include ('include/header.php'); ?>
 
 		<div class="wrapper">
 			<div class="container">
 				<div class="row">
-					<?php include('include/sidebar.php'); ?>
+					<?php include ('include/sidebar.php'); ?>
 					<div class="span9">
 						<div class="content">
 
@@ -77,7 +78,8 @@ if (strlen($_SESSION['alogin']) == 0) {
 									<?php if (isset($_POST['submit'])) { ?>
 										<div class="alert alert-success">
 											<button type="button" class="close" data-dismiss="alert">×</button>
-											<strong>Thành công!</strong> <?php echo htmlentities($_SESSION['msg']); ?><?php echo htmlentities($_SESSION['msg'] = ""); ?>
+											<strong>Thành công!</strong>
+											<?php echo htmlentities($_SESSION['msg']); ?>		<?php echo htmlentities($_SESSION['msg'] = ""); ?>
 										</div>
 									<?php } ?>
 
@@ -85,7 +87,8 @@ if (strlen($_SESSION['alogin']) == 0) {
 
 									<br />
 
-									<form class="form-horizontal row-fluid" name="insertproduct" method="post" enctype="multipart/form-data">
+									<form class="form-horizontal row-fluid" name="insertproduct" method="post"
+										enctype="multipart/form-data">
 
 										<?php
 
@@ -95,13 +98,15 @@ if (strlen($_SESSION['alogin']) == 0) {
 
 
 
-										?>
+											?>
 
 
 											<div class="control-group">
 												<label class="control-label" for="basicinput">Tên sản phẩm</label>
 												<div class="controls">
-													<input type="text" name="productName" readonly value="<?php echo htmlentities($row['productName']); ?>" class="span8 tip" required>
+													<input type="text" name="productName" readonly
+														value="<?php echo htmlentities($row['productName']); ?>"
+														class="span8 tip" required>
 												</div>
 											</div>
 
@@ -109,7 +114,8 @@ if (strlen($_SESSION['alogin']) == 0) {
 											<div class="control-group">
 												<label class="control-label" for="basicinput">Ảnh sản phẩm hiện tại (2)</label>
 												<div class="controls">
-													<img src="productimages/<?php echo htmlentities($pid); ?>/<?php echo htmlentities($row['productImage2']); ?>" width="200" height="100">
+													<img src="productimages/<?php echo htmlentities($pid); ?>/<?php echo htmlentities($row['productImage2']); ?>"
+														width="200" height="100">
 												</div>
 											</div>
 
@@ -118,7 +124,8 @@ if (strlen($_SESSION['alogin']) == 0) {
 											<div class="control-group">
 												<label class="control-label" for="basicinput">Ảnh sản phẩm mới (2)</label>
 												<div class="controls">
-													<input type="file" name="productimage2" id="productimage2" value="" class="span8 tip" required>
+													<input type="file" name="productimage2" id="productimage2" value=""
+														class="span8 tip" required>
 												</div>
 											</div>
 
@@ -144,7 +151,7 @@ if (strlen($_SESSION['alogin']) == 0) {
 			</div><!--/.container-->
 		</div><!--/.wrapper-->
 
-		<?php include('include/footer.php'); ?>
+		<?php include ('include/footer.php'); ?>
 
 		<script src="scripts/jquery-1.9.1.min.js" type="text/javascript"></script>
 		<script src="scripts/jquery-ui-1.10.1.custom.min.js" type="text/javascript"></script>
@@ -152,7 +159,7 @@ if (strlen($_SESSION['alogin']) == 0) {
 		<script src="scripts/flot/jquery.flot.js" type="text/javascript"></script>
 		<script src="scripts/datatables/jquery.dataTables.js"></script>
 		<script>
-			$(document).ready(function() {
+			$(document).ready(function () {
 				$('.datatable-1').dataTable({
 					language: {
 						emptyTable: 'Không có dữ liệu',

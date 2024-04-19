@@ -1,6 +1,6 @@
 <?php
 session_start();
-include('include/config.php');
+include ('include/config.php');
 if (strlen($_SESSION['alogin']) == 0) {
 	header('location:index.php');
 } else {
@@ -16,7 +16,7 @@ if (strlen($_SESSION['alogin']) == 0) {
 		$_SESSION['msg'] = "Category Updated !!";
 	}
 
-?>
+	?>
 	<!DOCTYPE html>
 	<html lang="en">
 
@@ -28,16 +28,17 @@ if (strlen($_SESSION['alogin']) == 0) {
 		<link type="text/css" href="bootstrap/css/bootstrap-responsive.min.css" rel="stylesheet">
 		<link type="text/css" href="css/theme.css" rel="stylesheet">
 		<link type="text/css" href="images/icons/css/font-awesome.css" rel="stylesheet">
-		<link type="text/css" href='http://fonts.googleapis.com/css?family=Open+Sans:400italic,600italic,400,600' rel='stylesheet'>
+		<link type="text/css" href='http://fonts.googleapis.com/css?family=Open+Sans:400italic,600italic,400,600'
+			rel='stylesheet'>
 	</head>
 
 	<body>
-		<?php include('include/header.php'); ?>
+		<?php include ('include/header.php'); ?>
 
 		<div class="wrapper">
 			<div class="container">
 				<div class="row">
-					<?php include('include/sidebar.php'); ?>
+					<?php include ('include/sidebar.php'); ?>
 					<div class="span9">
 						<div class="content">
 
@@ -50,7 +51,9 @@ if (strlen($_SESSION['alogin']) == 0) {
 									<?php if (isset($_POST['submit'])) { ?>
 										<div class="alert alert-success">
 											<button type="button" class="close" data-dismiss="alert">×</button>
-											<strong>Thành công!</strong> <?php echo htmlentities($_SESSION['msg']); ?><?php echo htmlentities($_SESSION['msg'] = ""); ?>
+											<strong>Thành công!</strong>
+											<?php echo htmlentities($_SESSION['msg']); ?>
+											<?php echo htmlentities($_SESSION['msg'] = ""); ?>
 										</div>
 									<?php } ?>
 
@@ -62,11 +65,13 @@ if (strlen($_SESSION['alogin']) == 0) {
 										$id = intval($_GET['id']);
 										$query = mysqli_query($con, "select * from category where id='$id'");
 										while ($row = mysqli_fetch_array($query)) {
-										?>
+											?>
 											<div class="control-group">
 												<label class="control-label" for="basicinput">Tên danh mục</label>
 												<div class="controls">
-													<input type="text" placeholder="Nhập tên danh mục...." name="category" value="<?php echo  htmlentities($row['categoryName']); ?>" class="span8 tip" required>
+													<input type="text" placeholder="Nhập tên danh mục...." name="category"
+														value="<?php echo htmlentities($row['categoryName']); ?>"
+														class="span8 tip" required>
 												</div>
 											</div>
 
@@ -74,7 +79,8 @@ if (strlen($_SESSION['alogin']) == 0) {
 											<div class="control-group">
 												<label class="control-label" for="basicinput">Mô tả</label>
 												<div class="controls">
-													<textarea class="span8" name="description" rows="5"><?php echo  htmlentities($row['categoryDescription']); ?></textarea>
+													<textarea class="span8" name="description"
+														rows="5"><?php echo htmlentities($row['categoryDescription']); ?></textarea>
 												</div>
 											</div>
 										<?php } ?>
@@ -88,18 +94,13 @@ if (strlen($_SESSION['alogin']) == 0) {
 								</div>
 							</div>
 
-
-
-
-
-
 						</div><!--/.content-->
 					</div><!--/.span9-->
 				</div>
 			</div><!--/.container-->
 		</div><!--/.wrapper-->
 
-		<?php include('include/footer.php'); ?>
+		<?php include ('include/footer.php'); ?>
 
 		<script src="scripts/jquery-1.9.1.min.js" type="text/javascript"></script>
 		<script src="scripts/jquery-ui-1.10.1.custom.min.js" type="text/javascript"></script>
@@ -107,7 +108,7 @@ if (strlen($_SESSION['alogin']) == 0) {
 		<script src="scripts/flot/jquery.flot.js" type="text/javascript"></script>
 		<script src="scripts/datatables/jquery.dataTables.js"></script>
 		<script>
-			$(document).ready(function() {
+			$(document).ready(function () {
 				$('.datatable-1').dataTable({
 					language: {
 						emptyTable: 'Không có dữ liệu',

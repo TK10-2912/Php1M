@@ -1,7 +1,7 @@
 <?php
 session_start();
 error_reporting(0);
-include("include/config.php");
+include ("include/config.php");
 if (isset($_POST['submit'])) {
 	$username = $_POST['username'];
 	$password = md5($_POST['password']);
@@ -18,8 +18,8 @@ if (isset($_POST['submit'])) {
 	} else {
 		$_SESSION['errmsg'] = "Invalid username or password";
 		$extra = "index.php";
-		$host  = $_SERVER['HTTP_HOST'];
-		$uri  = rtrim(dirname($_SERVER['PHP_SELF']), '/\\');
+		$host = $_SERVER['HTTP_HOST'];
+		$uri = rtrim(dirname($_SERVER['PHP_SELF']), '/\\');
 		header("location:http://$host$uri/$extra");
 		exit();
 	}
@@ -36,7 +36,8 @@ if (isset($_POST['submit'])) {
 	<link type="text/css" href="bootstrap/css/bootstrap-responsive.min.css" rel="stylesheet">
 	<link type="text/css" href="css/theme.css" rel="stylesheet">
 	<link type="text/css" href="images/icons/css/font-awesome.css" rel="stylesheet">
-	<link type="text/css" href='http://fonts.googleapis.com/css?family=Open+Sans:400italic,600italic,400,600' rel='stylesheet'>
+	<link type="text/css" href='http://fonts.googleapis.com/css?family=Open+Sans:400italic,600italic,400,600'
+		rel='stylesheet'>
 </head>
 
 <body>
@@ -73,23 +74,27 @@ if (isset($_POST['submit'])) {
 						<div class="module-head">
 							<h3>Sign In</h3>
 						</div>
-						<span style="color:red;"><?php echo htmlentities($_SESSION['errmsg']); ?><?php echo htmlentities($_SESSION['errmsg'] = ""); ?></span>
+						<span
+							style="color:red;"><?php echo htmlentities($_SESSION['errmsg']); ?><?php echo htmlentities($_SESSION['errmsg'] = ""); ?></span>
 						<div class="module-body">
 							<div class="control-group">
 								<div class="controls row-fluid">
-									<input class="span12" type="text" id="inputEmail" name="username" placeholder="Username">
+									<input class="span12" type="text" id="inputEmail" name="username"
+										placeholder="Username">
 								</div>
 							</div>
 							<div class="control-group">
 								<div class="controls row-fluid">
-									<input class="span12" type="password" id="inputPassword" name="password" placeholder="Password">
+									<input class="span12" type="password" id="inputPassword" name="password"
+										placeholder="Password">
 								</div>
 							</div>
 						</div>
 						<div class="module-foot">
 							<div class="control-group">
 								<div class="controls clearfix">
-									<button type="submit" class="btn btn-primary pull-right" name="submit">Login</button>
+									<button type="submit" class="btn btn-primary pull-right"
+										name="submit">Đăng nhập</button>
 
 								</div>
 							</div>

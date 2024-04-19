@@ -1,6 +1,6 @@
 <?php
 session_start();
-include('include/config.php');
+include ('include/config.php');
 if (strlen($_SESSION['alogin']) == 0) {
 	header('location:index.php');
 } else {
@@ -18,7 +18,7 @@ if (strlen($_SESSION['alogin']) == 0) {
 			$_SESSION['msg'] = "Old Password not match !!";
 		}
 	}
-?>
+	?>
 	<!DOCTYPE html>
 	<html lang="en">
 
@@ -30,7 +30,8 @@ if (strlen($_SESSION['alogin']) == 0) {
 		<link type="text/css" href="bootstrap/css/bootstrap-responsive.min.css" rel="stylesheet">
 		<link type="text/css" href="css/theme.css" rel="stylesheet">
 		<link type="text/css" href="images/icons/css/font-awesome.css" rel="stylesheet">
-		<link type="text/css" href='http://fonts.googleapis.com/css?family=Open+Sans:400italic,600italic,400,600' rel='stylesheet'>
+		<link type="text/css" href='http://fonts.googleapis.com/css?family=Open+Sans:400italic,600italic,400,600'
+			rel='stylesheet'>
 		<script type="text/javascript">
 			function valid() {
 				if (document.chngpwd.password.value == "") {
@@ -56,12 +57,12 @@ if (strlen($_SESSION['alogin']) == 0) {
 	</head>
 
 	<body>
-		<?php include('include/header.php'); ?>
+		<?php include ('include/header.php'); ?>
 
 		<div class="wrapper">
 			<div class="container">
 				<div class="row">
-					<?php include('include/sidebar.php'); ?>
+					<?php include ('include/sidebar.php'); ?>
 					<div class="span9">
 						<div class="content">
 
@@ -74,17 +75,20 @@ if (strlen($_SESSION['alogin']) == 0) {
 									<?php if (isset($_POST['submit'])) { ?>
 										<div class="alert alert-success">
 											<button type="button" class="close" data-dismiss="alert">×</button>
-											<?php echo htmlentities($_SESSION['msg']); ?><?php echo htmlentities($_SESSION['msg'] = ""); ?>
+											<?php echo htmlentities($_SESSION['msg']); ?>
+											<?php echo htmlentities($_SESSION['msg'] = ""); ?>
 										</div>
 									<?php } ?>
 									<br />
 
-									<form class="form-horizontal row-fluid" name="chngpwd" method="post" onSubmit="return valid();">
+									<form class="form-horizontal row-fluid" name="chngpwd" method="post"
+										onSubmit="return valid();">
 
 										<div class="control-group">
 											<label class="control-label" for="basicinput">Mật khẩu hiện tại</label>
 											<div class="controls">
-												<input type="password" placeholder="Nhập mật khẩu hiện tại..." name="password" class="span8 tip" required>
+												<input type="password" placeholder="Nhập mật khẩu hiện tại..."
+													name="password" class="span8 tip" required>
 											</div>
 										</div>
 
@@ -92,14 +96,16 @@ if (strlen($_SESSION['alogin']) == 0) {
 										<div class="control-group">
 											<label class="control-label" for="basicinput">Mật khẩu mới</label>
 											<div class="controls">
-												<input type="password" placeholder="Nhập mật khẩu mới..." name="newpassword" class="span8 tip" required>
+												<input type="password" placeholder="Nhập mật khẩu mới..." name="newpassword"
+													class="span8 tip" required>
 											</div>
 										</div>
 
 										<div class="control-group">
 											<label class="control-label" for="basicinput">Nhập lại mật khẩu mới</label>
 											<div class="controls">
-												<input type="password" placeholder="Nhập lại mật khẩu mới..." name="confirmpassword" class="span8 tip" required>
+												<input type="password" placeholder="Nhập lại mật khẩu mới..."
+													name="confirmpassword" class="span8 tip" required>
 											</div>
 										</div>
 
@@ -118,7 +124,7 @@ if (strlen($_SESSION['alogin']) == 0) {
 			</div><!--/.container-->
 		</div><!--/.wrapper-->
 
-		<?php include('include/footer.php'); ?>
+		<?php include ('include/footer.php'); ?>
 
 		<script src="scripts/jquery-1.9.1.min.js" type="text/javascript"></script>
 		<script src="scripts/jquery-ui-1.10.1.custom.min.js" type="text/javascript"></script>
