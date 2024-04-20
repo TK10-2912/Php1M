@@ -28,6 +28,7 @@ if (strlen($_SESSION['login']) == 0) {
 		} else {
 			echo "<script>alert('Current Password not match !!');</script>";
 		}
+		$_SESSION['username'] = $name;
 	}
 
 	?>

@@ -2758,7 +2758,7 @@ span.action-name {
 }
 
 #quick-view-close:before {
-	font-family: "fontello";
+	font-family: "Roboto";
 	font-style: normal;
 	font-weight: normal;
 	speak: none;
@@ -4235,7 +4235,7 @@ table.coupon-table td.fit-cell {
 
 .twitter-widget li:before {
 	content: '\e965';
-	font-family: "fontello";
+	font-family: "Roboto";
 	font-style: normal;
 	font-weight: normal;
 	speak: none;
@@ -4587,7 +4587,7 @@ input[type="checkbox"]+label:before {
 	bottom: 1px;
 	background-color: #f7f7f7;
 	border: 1px solid #e6e6e6;
-	font-family: "fontello";
+	font-family: "Roboto";
 	font-style: normal;
 	font-weight: normal;
 	speak: none;

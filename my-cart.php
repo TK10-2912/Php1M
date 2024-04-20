@@ -395,8 +395,6 @@ if (isset($_POST['shipupdate'])) {
 														class="btn-upper btn btn-primary checkout-page-button">Cập nhật</button>
 												<?php } ?>
 											</div>
-
-
 										</td>
 									</tr>
 								</tbody><!-- /tbody -->
@@ -432,7 +430,7 @@ if (isset($_POST['shipupdate'])) {
 				</div>
 			</div>
 			</form>
-			<?php echo include ('includes/brands-slider.php'); ?>
+			<?php echo include ('includes/brands-slider.php') ?>
 		</div>
 	</div>
 	<?php include ('includes/footer.php'); ?>
