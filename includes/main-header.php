@@ -19,9 +19,7 @@ if (isset($_Get['action'])) {
 				<!-- ============================================================= LOGO ============================================================= -->
 				<div class="logo">
 					<a href="index.php">
-
 						<h2>Tên web (nao sửa)</h2>
-
 					</a>
 				</div>
 			</div>
@@ -29,9 +27,7 @@ if (isset($_Get['action'])) {
 				<div class="search-area">
 					<form name="search" method="post" action="search-result.php">
 						<div class="control-group">
-
 							<input class="search-field" placeholder="Tìm kiếm..." name="product" required="required" />
-
 							<button class="search-button" type="submit" name="search"></button>
 
 						</div>
@@ -52,7 +48,8 @@ if (isset($_Get['action'])) {
 									<span class="lbl">Giỏ hàng -</span>
 									<span class="total-price">
 										<span class="sign"></span>
-										<span class="value"><?php echo $_SESSION['tp']; ?></span>
+										<span class="value"><?php echo number_format($_SESSION['tp'], 0, ',', '.'); ?>
+											đ</span>
 									</span>
 								</div>
 								<div class="basket">
@@ -64,7 +61,6 @@ if (isset($_Get['action'])) {
 							</div>
 						</a>
 						<ul class="dropdown-menu">
-
 							<?php
 							$sql = "SELECT * FROM products WHERE id IN(";
 							foreach ($_SESSION['cart'] as $id => $value) {
@@ -80,10 +76,7 @@ if (isset($_Get['action'])) {
 									$subtotal = $_SESSION['cart'][$row['id']]['quantity'] * $row['productPrice'] + $row['shippingCharge'];
 									$totalprice += $subtotal;
 									$_SESSION['qnty'] = $totalqunty += $quantity;
-
 									?>
-
-
 									<li>
 										<div class="cart-item product-summary">
 											<div class="row">
@@ -95,12 +88,11 @@ if (isset($_Get['action'])) {
 													</div>
 												</div>
 												<div class="col-xs-7">
-
 													<h3 class="name"><a
 															href="product-details.php?pid=<?php echo $row['id']; ?>"><?php echo $row['productName']; ?></a>
 													</h3>
 													<div class="price">
-														Rs.<?php echo ($row['productPrice'] + $row['shippingCharge']); ?>*<?php echo $_SESSION['cart'][$row['id']]['quantity']; ?>
+														<?php echo ($row['productPrice'] + $row['shippingCharge']); ?>*<?php echo $_SESSION['cart'][$row['id']]['quantity']; ?>
 													</div>
 												</div>
 
@@ -114,9 +106,8 @@ if (isset($_Get['action'])) {
 
 								<div class="clearfix cart-total">
 									<div class="pull-right">
-
-										<span class="text">Total :</span><span
-											class='price'>Rs.<?php echo $_SESSION['tp'] = "$totalprice" . ".00"; ?></span>
+										<span class="text">Tổng :</span><span
+											class='price'><?php echo $_SESSION['tp'] = "$totalprice"; ?></span>
 
 									</div>
 
@@ -124,8 +115,6 @@ if (isset($_Get['action'])) {
 
 									<a href="my-cart.php" class="btn btn-upper btn-primary btn-block m-t-20">Giỏ hàng</a>
 								</div><!-- /.cart-total-->
-
-
 							</li>
 						</ul><!-- /.dropdown-menu-->
 					</div><!-- /.dropdown-cart -->
@@ -137,7 +126,7 @@ if (isset($_Get['action'])) {
 									<span class="lbl">Giỏ hàng -</span>
 									<span class="total-price">
 										<span class="sign"></span>
-										<span class="value">00.00</span>
+										<span class="value">0 đ</span>
 									</span>
 								</div>
 								<div class="basket">
@@ -148,41 +137,24 @@ if (isset($_Get['action'])) {
 							</div>
 						</a>
 						<ul class="dropdown-menu">
-
-
-
-
 							<li>
 								<div class="cart-item product-summary">
 									<div class="row">
 										<div class="col-xs-12">
 											Giỏ hàng của bạn đang trống!
 										</div>
-
-
 									</div>
 								</div><!-- /.cart-item -->
-
-
 								<hr>
-
 								<div class="clearfix cart-total">
-
 									<div class="clearfix"></div>
-
 									<a href="index.php" class="btn btn-upper btn-primary btn-block m-t-20">Tiếp tục mua
 										hàng</a>
 								</div><!-- /.cart-total-->
-
-
 							</li>
 						</ul><!-- /.dropdown-menu-->
 					</div>
 				<?php } ?>
-
-
-
-
 				<!-- ============================================================= SHOPPING CART DROPDOWN : END============================================================= -->
 			</div><!-- /.top-cart-row -->
 		</div><!-- /.row -->

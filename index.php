@@ -17,7 +17,7 @@ if (isset($_GET['action']) && $_GET['action'] == "add") {
 			$message = "Product ID is invalid";
 		}
 	}
-	echo "<script>alert('Product has been added to the cart')</script>";
+	echo "<script>alert('Sản phẩm đã được thêm vào giỏ hàng')</script>";
 	echo "<script type='text/javascript'> document.location ='my-cart.php'; </script>";
 }
 
@@ -216,9 +216,10 @@ if (isset($_GET['action']) && $_GET['action'] == "add") {
 
 														<div class="product-price">
 															<span class="price">
-																<?php echo htmlentities($row['productPrice']); ?>đ </span>
+																<?php echo number_format(htmlentities($row['productPrice']), 0, ',', '.'); ?>đ
+															</span>
 															<span
-																class="price-before-discount"><?php echo htmlentities($row['productPriceBeforeDiscount']); ?>
+																class="price-before-discount"><?php echo number_format(htmlentities($row['productPriceBeforeDiscount']), 0, ',', '.'); ?>
 															</span>
 
 														</div><!-- /.product-price -->
@@ -282,10 +283,10 @@ if (isset($_GET['action']) && $_GET['action'] == "add") {
 
 														<div class="product-price">
 															<span class="price">
-																<?php echo htmlentities($row['productPrice']); ?>đ
+																<?php echo number_format(htmlentities($row['productPrice']), 0, ',', '.'); ?>đ
 															</span>
 															<span
-																class="price-before-discount"><?php echo htmlentities($row['productPriceBeforeDiscount']); ?>
+																class="price-before-discount"><?php echo number_format(htmlentities($row['productPriceBeforeDiscount']), 0, ',', '.'); ?>
 																đ</span>
 
 														</div><!-- /.product-price -->
@@ -349,9 +350,10 @@ if (isset($_GET['action']) && $_GET['action'] == "add") {
 
 														<div class="product-price">
 															<span class="price">
-																<?php echo htmlentities($row['productPrice']); ?>đ </span>
+																<?php echo number_format(htmlentities($row['productPrice']), 0, ',', '.'); ?>đ
+															</span>
 															<span
-																class="price-before-discount"><?php echo htmlentities($row['productPriceBeforeDiscount']); ?>
+																class="price-before-discount"><?php echo number_format(htmlentities($row['productPriceBeforeDiscount']), 0, ',', '.'); ?>
 																đ</span>
 
 														</div>
@@ -360,7 +362,8 @@ if (isset($_GET['action']) && $_GET['action'] == "add") {
 													<?php if ($row['productAvailability'] == 'In Stock') { ?>
 														<div class="action"><a
 																href="index.php?page=product&action=add&id=<?php echo $row['id']; ?>"
-																class="lnk btn btn-primary">Thêm vào giỏ hàng</a></div>
+																class="lnk btn btn-primary">Thêm vào giỏ
+																hàng</a></div>
 													<?php } else { ?>
 														<div class="action" style="color:red">Hết hàng</div>
 													<?php } ?>
@@ -418,10 +421,10 @@ if (isset($_GET['action']) && $_GET['action'] == "add") {
 
 														<div class="product-price">
 															<span class="price">
-																<?php echo htmlentities($row['productPrice']); ?>đ
+																<?php echo number_format(htmlentities($row['productPrice']), 0, ',', '.'); ?>đ
 															</span>
 															<span
-																class="price-before-discount"><?php echo htmlentities($row['productPriceBeforeDiscount']); ?>
+																class="price-before-discount"><?php echo number_format(htmlentities($row['productPriceBeforeDiscount']), 0, ',', '.'); ?>
 																đ</span>
 
 														</div>
@@ -430,9 +433,11 @@ if (isset($_GET['action']) && $_GET['action'] == "add") {
 													<?php if ($row['productAvailability'] == 'In Stock') { ?>
 														<div class="action"><a
 																href="index.php?page=product&action=add&id=<?php echo $row['id']; ?>"
-																class="lnk btn btn-primary">Thêm vào giỏ hàng</a></div>
+																class="lnk btn btn-primary">Thêm vào
+																giỏ hàng</a></div>
 													<?php } else { ?>
-														<div class="action" style="color:red">Hết hàng</div>
+														<div class="action" style="color:red">Hết
+															hàng</div>
 													<?php } ?>
 												</div>
 											</div>
@@ -479,10 +484,10 @@ if (isset($_GET['action']) && $_GET['action'] == "add") {
 
 														<div class="product-price">
 															<span class="price">
-																<?php echo htmlentities($row['productPrice']); ?>đ
+																<?php echo number_format(htmlentities($row['productPrice']), 0, ',', '.'); ?>đ
 															</span>
 															<span
-																class="price-before-discount"><?php echo htmlentities($row['productPriceBeforeDiscount']); ?>
+																class="price-before-discount"><?php echo number_format(htmlentities($row['productPriceBeforeDiscount']), 0, ',', '.'); ?>
 																đ</span>
 
 														</div>
@@ -491,9 +496,11 @@ if (isset($_GET['action']) && $_GET['action'] == "add") {
 													<?php if ($row['productAvailability'] == 'In Stock') { ?>
 														<div class="action"><a
 																href="index.php?page=product&action=add&id=<?php echo $row['id']; ?>"
-																class="lnk btn btn-primary">Thêm vào giỏ hàng</a></div>
+																class="lnk btn btn-primary">Thêm vào
+																giỏ hàng</a></div>
 													<?php } else { ?>
-														<div class="action" style="color:red">Hết hàng</div>
+														<div class="action" style="color:red">Hết
+															hàng</div>
 													<?php } ?>
 												</div>
 											</div>
@@ -553,14 +560,16 @@ if (isset($_GET['action']) && $_GET['action'] == "add") {
 														<div class="rating rateit-small"></div>
 														<div class="product-price">
 															<span class="price">
-																<?php echo htmlentities($row['productPrice']); ?> đ
+																<?php echo number_format(htmlentities($row['productPrice']), 0, ',', '.'); ?>
+																đ
 															</span>
 
 														</div><!-- /.product-price -->
 														<?php if ($row['productAvailability'] == 'In Stock') { ?>
 															<div class="action"><a
 																	href="index.php?page=product&action=add&id=<?php echo $row['id']; ?>"
-																	class="lnk btn btn-primary">Thêm vào giỏ hàng</a></div>
+																	class="lnk btn btn-primary">Thêm vào giỏ
+																	hàng</a></div>
 														<?php } else { ?>
 															<div class="action" style="color:red">Hết hàng</div>
 														<?php } ?>

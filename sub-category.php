@@ -13,7 +13,7 @@ if (isset($_GET['action']) && $_GET['action'] == "add") {
 		if (mysqli_num_rows($query_p) != 0) {
 			$row_p = mysqli_fetch_array($query_p);
 			$_SESSION['cart'][$row_p['id']] = array("quantity" => 1, "price" => $row_p['productPrice']);
-			echo "<script>alert('Product has been added to the cart')</script>";
+			echo "<script>alert('Sản phẩm đã được thêm vào giỏ hàng')</script>";
 			echo "<script type='text/javascript'> document.location ='my-cart.php'; </script>";
 		} else {
 			$message = "Product ID is invalid";
@@ -26,7 +26,7 @@ if (isset($_GET['pid']) && $_GET['action'] == "wishlist") {
 		header('location:login.php');
 	} else {
 		mysqli_query($con, "insert into wishlist(userId,productId) values('" . $_SESSION['id'] . "','" . $_GET['pid'] . "')");
-		echo "<script>alert('Product aaded in wishlist');</script>";
+		echo "<script>alert('Sản phẩm đã được thêm vào danh sách yêu thích');</script>";
 		header('location:my-wishlist.php');
 
 	}
@@ -205,10 +205,10 @@ if (isset($_GET['pid']) && $_GET['action'] == "wishlist") {
 
 																<div class="product-price">
 																	<span class="price">
-																		<?php echo htmlentities($row['productPrice']); ?>
+																		<?php echo number_format(htmlentities($row['productPrice']), 0, ',', '.'); ?>
 																	</span>
 																	<span class="price-before-discount">
-																		<?php echo htmlentities($row['productPriceBeforeDiscount']); ?></span>
+																		<?php echo number_format(htmlentities($row['productPriceBeforeDiscount']), 0, ',', '.'); ?></span>
 
 																</div><!-- /.product-price -->
 

@@ -12,7 +12,7 @@ if (isset($_POST['submit'])) {
 
 			}
 		}
-		echo "<script>alert('Your Cart hasbeen Updated');</script>";
+		echo "<script>alert('Giỏ hàng được cập nhật');</script>";
 	}
 }
 // Code for Remove a Product from Cart
@@ -23,7 +23,7 @@ if (isset($_POST['remove_code'])) {
 
 			unset($_SESSION['cart'][$key]);
 		}
-		echo "<script>alert('Your Cart has been Updated');</script>";
+		echo "<script>alert('Giỏ hàng được cập nhật');</script>";
 	}
 }
 // code for insert product in order table
@@ -183,7 +183,7 @@ if (isset($_POST['shipupdate'])) {
 															<a href="index.php"
 																class="btn btn-upper btn-primary outer-left-xs">Tiếp tục mua
 																hàng</a>
-															<input type="submit" name="submit" value="Update shopping cart"
+															<input type="submit" name="submit" value="Cập nhật giỏ hàng"
 																class="btn btn-upper btn-primary pull-right outer-right-xs">
 														</span>
 													</div><!-- /.shopping-cart-btn -->
@@ -224,7 +224,6 @@ if (isset($_POST['shipupdate'])) {
 														<td class="cart-product-name-info">
 															<h4 class='cart-product-description'><a
 																	href="product-details.php?pid=<?php echo htmlentities($pd = $row['id']); ?>"><?php echo $row['productName'];
-
 																		 $_SESSION['sid'] = $pd;
 																		 ?></a></h4>
 															<div class="row">
@@ -258,14 +257,14 @@ if (isset($_POST['shipupdate'])) {
 															</div>
 														</td>
 														<td class="cart-product-sub-total"><span
-																class="cart-sub-total-price"><?php echo "Rs" . " " . $row['productPrice']; ?>.00</span>
+																class="cart-sub-total-price"><?php echo number_format($row['productPrice'], 0, ',', '.'); ?></span>
 														</td>
 														<td class="cart-product-sub-total"><span
-																class="cart-sub-total-price"><?php echo "Rs" . " " . $row['shippingCharge']; ?>.00</span>
+																class="cart-sub-total-price"><?php echo number_format($row['shippingCharge'], 0, ',', '.'); ?></span>
 														</td>
 
 														<td class="cart-product-grand-total"><span
-																class="cart-grand-total-price"><?php echo ($_SESSION['cart'][$row['id']]['quantity'] * $row['productPrice'] + $row['shippingCharge']); ?></span>
+																class="cart-grand-total-price"><?php echo number_format(($_SESSION['cart'][$row['id']]['quantity'] * $row['productPrice'] + $row['shippingCharge']), 0, ',', '.'); ?></span>
 														</td>
 													</tr>
 
@@ -304,9 +303,6 @@ if (isset($_POST['shipupdate'])) {
 															name="billingaddress"
 															required="required"><?php echo $row['billingAddress']; ?></textarea>
 													</div>
-
-
-
 													<div class="form-group">
 														<label class="info-title" for="Billing State ">Quốc gia
 															<span>*</span></label>
@@ -328,15 +324,10 @@ if (isset($_POST['shipupdate'])) {
 															id="billingpincode" name="billingpincode" required="required"
 															value="<?php echo $row['billingPincode']; ?>">
 													</div>
-
 													<button type="submit" name="update"
 														class="btn-upper btn btn-primary checkout-page-button">Cập nhật</button>
-
-
 												<?php } ?>
-
 											</div>
-
 										</td>
 									</tr>
 								</tbody><!-- /tbody -->
@@ -404,10 +395,11 @@ if (isset($_POST['shipupdate'])) {
 							<table class="table table-bordered">
 								<thead>
 									<tr>
-										<th>
+										<th style="text-align: center;padding: 12px 24px;">
 											<div class="cart-grand-total">
 												Tổng cộng<span
-													class="inner-left-md"><?php echo $_SESSION['tp'] = "$totalprice"; ?></span>
+													class="inner-left-md"><?php echo number_format($_SESSION['tp'] = "$totalprice", 0, ',', '.'); ?>
+													đ</span>
 											</div>
 										</th>
 									</tr>

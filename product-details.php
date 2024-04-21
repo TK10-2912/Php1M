@@ -12,7 +12,7 @@ if (isset($_GET['action']) && $_GET['action'] == "add") {
 		if (mysqli_num_rows($query_p) != 0) {
 			$row_p = mysqli_fetch_array($query_p);
 			$_SESSION['cart'][$row_p['id']] = array("quantity" => 1, "price" => $row_p['productPrice']);
-			echo "<script>alert('Product has been added to the cart')</script>";
+			echo "<script>alert('Sản phẩm đã được thêm vào giỏ hàng')</script>";
 			echo "<script type='text/javascript'> document.location ='my-cart.php'; </script>";
 		} else {
 			$message = "Product ID is invalid";
@@ -25,7 +25,7 @@ if (isset($_GET['pid']) && $_GET['action'] == "wishlist") {
 		header('location:login.php');
 	} else {
 		mysqli_query($con, "insert into wishlist(userId,productId) values('" . $_SESSION['id'] . "','$pid')");
-		echo "<script>alert('Product aaded in wishlist');</script>";
+		echo "<script>alert('Sản phẩm đã được thêm vào danh sách yêu thích');</script>";
 		header('location:my-wishlist.php');
 
 	}
@@ -169,11 +169,11 @@ if (isset($_POST['submit'])) {
 
 												<div class="product-price">
 													<span class="price">
-														<?php echo htmlentities($rws['productPrice']); ?>
+														<?php echo number_format(htmlentities($rws['productPrice']), 0, ',', '.'); ?>
 													</span>
 
 													<span
-														class="price-before-discount">Rs.<?php echo htmlentities($row['productPriceBeforeDiscount']); ?></span>
+														class="price-before-discount"><?php echo number_format(htmlentities($row['productPriceBeforeDiscount']), 0, ',', '.'); ?></span>
 
 												</div><!-- /.product-price -->
 
@@ -370,12 +370,12 @@ if (isset($_POST['submit'])) {
 
 									<div class="stock-container info-container m-t-10">
 										<div class="row">
-											<div class="col-sm-3">
+											<div class="col-sm-4">
 												<div class="stock-box">
 													<span class="label">Phí vận chuyển :</span>
 												</div>
 											</div>
-											<div class="col-sm-9">
+											<div class="col-sm-8">
 												<div class="stock-box">
 													<span class="value"><?php if ($row['shippingCharge'] == 0) {
 														echo "Free";
@@ -396,9 +396,9 @@ if (isset($_POST['submit'])) {
 											<div class="col-sm-6">
 												<div class="price-box">
 													<span class="price">
-														<?php echo htmlentities($row['productPrice']); ?></span>
+														<?php echo number_format(htmlentities($row['productPrice']), 0, ',', '.'); ?></span>
 													<span
-														class="price-strike"><?php echo htmlentities($row['productPriceBeforeDiscount']); ?></span>
+														class="price-strike"><?php echo number_format(htmlentities($row['productPriceBeforeDiscount']), 0, ',', '.'); ?></span>
 												</div>
 											</div>
 											<div class="col-sm-6">
@@ -518,7 +518,6 @@ if (isset($_POST['submit'])) {
 
 
 													<div class="product-add-review">
-														<h4 class="title">Write your own review</h4>
 														<div class="review-table">
 															<div class="table-responsive">
 																<table class="table table-bordered">
@@ -667,9 +666,10 @@ if (isset($_POST['submit'])) {
 
 									<div class="product-price">
 										<span class="price">
-											<?php echo htmlentities($rw['productPrice']); ?> </span>
+											<?php echo number_format(htmlentities($rw['productPrice']), 0, ',', '.'); ?>
+										</span>
 										<span class="price-before-discount">
-											<?php echo htmlentities($rw['productPriceBeforeDiscount']); ?></span>
+											<?php echo number_format(htmlentities($rw['productPriceBeforeDiscount']), 0, ',', '.'); ?></span>
 									</div><!-- /.product-price -->
 								</div><!-- /.product-info -->
 								<div class="cart clearfix animate-effect">
@@ -722,6 +722,7 @@ if (isset($_POST['submit'])) {
 	<script src="assets/js/bootstrap-select.min.js"></script>
 	<script src="assets/js/wow.min.js"></script>
 	<script src="assets/js/scripts.js"></script>
+
 
 	<!-- For demo purposes – can be removed on production -->
 

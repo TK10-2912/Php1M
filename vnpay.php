@@ -4,14 +4,14 @@
 // include('includes/config.php');
 error_reporting(E_ALL & ~E_NOTICE & ~E_DEPRECATED);
 date_default_timezone_set('Asia/Ho_Chi_Minh');
-$vnp_TxnRef = rand(1,10000); 
+$vnp_TxnRef = rand(1, 10000);
 $vnp_Url = "https://sandbox.vnpayment.vn/paymentv2/vpcpay.html";
 $vnp_Returnurl = "http://mm-ecom.com/my-account.php";
 $vnp_TmnCode = "UWKOLPQX";
 $vnp_HashSecret = "ZQGSWIHKRWFZFBHAYDOXZTEVMPSRZMSZ";
 $vnp_OrderInfo = "Thanh toán đơn hàng test";
 $vnp_OrderType = "billpayment";
-$vnp_Amount = 40000 * 100;
+$vnp_Amount = $_POST['money'] * 100;
 $vnp_Locale = "vn";
 $vnp_BankCode = "";
 $vnp_IpAddr = $_SERVER['REMOTE_ADDR'];

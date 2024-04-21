@@ -1,12 +1,12 @@
 <?php
 session_start();
 error_reporting(0);
-include('includes/config.php');
+include ('includes/config.php');
 if (strlen($_SESSION['login']) == 0) {
 	header('location:login.php');
 } else {
 
-?>
+	?>
 
 	<!DOCTYPE html>
 	<html lang="en">
@@ -63,9 +63,9 @@ if (strlen($_SESSION['login']) == 0) {
 
 		<!-- ============================================== HEADER ============================================== -->
 		<header class="header-style-1">
-			<?php include('includes/top-header.php'); ?>
-			<?php include('includes/main-header.php'); ?>
-			<?php include('includes/menu-bar.php'); ?>
+			<?php include ('includes/top-header.php'); ?>
+			<?php include ('includes/main-header.php'); ?>
+			<?php include ('includes/menu-bar.php'); ?>
 		</header>
 		<!-- ============================================== HEADER : END ============================================== -->
 		<div class="breadcrumb">
@@ -91,15 +91,14 @@ if (strlen($_SESSION['login']) == 0) {
 										<thead>
 											<tr>
 												<th class="cart-romove item">#</th>
-												<th class="cart-description item">Image</th>
-												<th class="cart-product-name item">Product Name</th>
-
-												<th class="cart-qty item">Quantity</th>
-												<th class="cart-sub-total item">Price Per unit</th>
-												<th class="cart-sub-total item">Shipping Charge</th>
-												<th class="cart-total item">Grandtotal</th>
-												<th class="cart-total item">Payment Method</th>
-												<th class="cart-description item">Order Date</th>
+												<th class="cart-description item">Hình ảnh</th>
+												<th class="cart-product-name item">Tên Sản phẩm</th>
+												<th class="cart-qty item">Số lượng</th>
+												<th class="cart-sub-total item">Giá mỗi sản phẩm</th>
+												<th class="cart-sub-total item">Phí vận chuyển</th>
+												<th class="cart-total item">Tổng cộng</th>
+												<th class="cart-total item">Phương thức thanh toán</th>
+												<th class="cart-description item">Ngày đặt hàng</th>
 											</tr>
 										</thead><!-- /thead -->
 
@@ -108,16 +107,28 @@ if (strlen($_SESSION['login']) == 0) {
 											<?php $query = mysqli_query($con, "select products.productImage1 as pimg1,products.productName as pname,products.id as proid,orders.productId as opid,orders.quantity as qty,products.productPrice as pprice,products.shippingCharge as shippingcharge,orders.paymentMethod as paym,orders.orderDate as odate,orders.id as orderid from orders join products on orders.productId=products.id where orders.userId='" . $_SESSION['id'] . "' and orders.paymentMethod is not null");
 											$cnt = 1;
 											while ($row = mysqli_fetch_array($query)) {
-											?>
+												$qty = $row['qty'];
+												$price = $row['pprice'];
+												$shippcharge = $row['shippingcharge'];
+												$subtotal = ($qty * $price) + $shippcharge; // Tính tổng tiền cho mỗi hàng
+												$total += $subtotal; // Cộng vào tổng số tiền
+										
+												// Định dạng tiền cho các cột
+												$formatted_price = number_format($price, 0, ',', '.');
+												$formatted_shipping_charge = number_format($shippcharge, 0, ',', '.');
+												$formatted_subtotal = number_format($subtotal, 0, ',', '.');
+												?>
 												<tr>
 													<td><?php echo $cnt; ?></td>
 													<td class="cart-image">
 														<a class="entry-thumbnail" href="detail.html">
-															<img src="admin/productimages/<?php echo $row['proid']; ?>/<?php echo $row['pimg1']; ?>" alt="" width="84" height="146">
+															<img src="admin/productimages/<?php echo $row['proid']; ?>/<?php echo $row['pimg1']; ?>"
+																alt="" width="84" height="146">
 														</a>
 													</td>
 													<td class="cart-product-name-info">
-														<h4 class='cart-product-description'><a href="product-details.php?pid=<?php echo $row['opid']; ?>">
+														<h4 class='cart-product-description'><a
+																href="product-details.php?pid=<?php echo $row['opid']; ?>">
 																<?php echo $row['pname']; ?></a></h4>
 
 
@@ -125,21 +136,25 @@ if (strlen($_SESSION['login']) == 0) {
 													<td class="cart-product-quantity">
 														<?php echo $qty = $row['qty']; ?>
 													</td>
-													<td class="cart-product-sub-total"><?php echo $price = $row['pprice']; ?> </td>
-													<td class="cart-product-sub-total"><?php echo $shippcharge = $row['shippingcharge']; ?> </td>
-													<td class="cart-product-grand-total"><?php echo (($qty * $price) + $shippcharge); ?></td>
+													<td class='cart-product-sub-total'><?php echo $formatted_price ?></td>
+													<td class='cart-product-sub-total'><?php echo $formatted_shipping_charge ?>
+													</td>
+													<td class='cart-product-grand-total'><?php echo $formatted_subtotal ?></td>
 													<td class="cart-product-sub-total"><?php echo $row['paym']; ?> </td>
 													<td class="cart-product-sub-total"><?php echo $row['odate']; ?> </td>
 												</tr>
-											<?php $cnt = $cnt + 1;
+												<?php $cnt = $cnt + 1;
 											} ?>
 
 										</tbody><!-- /tbody -->
 									</table><!-- /table -->
 								</form>
+							</div>
+							<div style='text-align:right;margin-top:20px'>
 								<form role="form" method="post" action="vnpay.php">
-									<input type="hidden" name="money" value="{{(($qty * $price) + $shippcharge)}}">
-									<button type="submit" name="submit" name="redirect" class="btn-upper btn btn-primary checkout-page-button">Thanh toán VnPay</button>
+									<input type="hidden" name="money" value="<?php echo $total ?>" />
+									<button type=" submit" name="submit" name="redirect"
+										class="btn-upper btn btn-primary checkout-page-button">Thanh toán VnPay</button>
 								</form>
 							</div>
 						</div>
@@ -148,11 +163,11 @@ if (strlen($_SESSION['login']) == 0) {
 				</div> <!-- /.row -->
 				</form>
 				<!-- ============================================== BRANDS CAROUSEL ============================================== -->
-				<?php echo include('includes/brands-slider.php'); ?>
+				<?php echo include ('includes/brands-slider.php'); ?>
 				<!-- ============================================== BRANDS CAROUSEL : END ============================================== -->
 			</div><!-- /.container -->
 		</div><!-- /.body-content -->
-		<?php include('includes/footer.php'); ?>
+		<?php include ('includes/footer.php'); ?>
 
 		<script src="assets/js/jquery-1.11.1.min.js"></script>
 
@@ -175,17 +190,17 @@ if (strlen($_SESSION['login']) == 0) {
 		<script src="switchstylesheet/switchstylesheet.js"></script>
 
 		<script>
-			$(document).ready(function() {
+			$(document).ready(function () {
 				$(".changecolor").switchstylesheet({
 					seperator: "color"
 				});
-				$('.show-theme-options').click(function() {
+				$('.show-theme-options').click(function () {
 					$(this).parent().toggleClass('open');
 					return false;
 				});
 			});
 
-			$(window).bind("load", function() {
+			$(window).bind("load", function () {
 				$('.show-theme-options').delay(2000).trigger('click');
 			});
 		</script>

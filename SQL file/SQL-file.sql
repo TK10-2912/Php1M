@@ -61,7 +61,7 @@ CREATE TABLE `category` (
 --
 
 INSERT INTO `category` (`id`, `categoryName`, `categoryDescription`, `creationDate`, `updationDate`) VALUES
-(3, 'Books', 'Test anuj', '2017-01-24 19:17:37', '30-01-2017 12:22:24 AM'),
+(3, 'Sách', 'Test anuj', '2017-01-24 19:17:37', '30-01-2017 12:22:24 AM'),
 (4, 'Electronics', 'Electronic Products', '2017-01-24 19:19:32', ''),
 (5, 'Furniture', 'test', '2017-01-24 19:19:54', ''),
 (6, 'Fashion', 'Fashion', '2017-02-20 19:18:52', '');

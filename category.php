@@ -13,7 +13,7 @@ if (isset($_GET['action']) && $_GET['action'] == "add") {
 		if (mysqli_num_rows($query_p) != 0) {
 			$row_p = mysqli_fetch_array($query_p);
 			$_SESSION['cart'][$row_p['id']] = array("quantity" => 1, "price" => $row_p['productPrice']);
-			echo "<script>alert('Product has been added to the cart')</script>";
+			echo "<script>alert('Sản phẩm đã được thêm vào giỏ hàng')</script>";
 			echo "<script type='text/javascript'> document.location ='my-cart.php'; </script>";
 		} else {
 			$message = "Product ID is invalid";
@@ -27,7 +27,7 @@ if (isset($_GET['pid']) && $_GET['action'] == "wishlist") {
 		header('location:login.php');
 	} else {
 		mysqli_query($con, "insert into wishlist(userId,productId) values('" . $_SESSION['id'] . "','" . $_GET['pid'] . "')");
-		echo "<script>alert('Product aaded in wishlist');</script>";
+		echo "<script>alert('Sản phẩm đã được thêm vào danh sách yêu thích');</script>";
 		header('location:my-wishlist.php');
 
 	}
@@ -46,7 +46,7 @@ if (isset($_GET['pid']) && $_GET['action'] == "wishlist") {
 	<meta name="keywords" content="MediaCenter, Template, eCommerce">
 	<meta name="robots" content="all">
 
-	<title>Product Category</title>
+	<title>Danh mục sản phẩm</title>
 
 	<!-- Bootstrap Core CSS -->
 	<link rel="stylesheet" href="assets/css/bootstrap.min.css">
@@ -121,9 +121,9 @@ if (isset($_GET['pid']) && $_GET['action'] == "wishlist") {
 
 										while ($row = mysqli_fetch_array($sql)) {
 											?>
-													<a href="sub-category.php?scid=<?php echo $row['id']; ?>"
-														class="dropdown-toggle"><i class="icon fa fa-desktop fa-fw"></i>
-														<?php echo $row['subcategory']; ?></a>
+											<a href="sub-category.php?scid=<?php echo $row['id']; ?>"
+												class="dropdown-toggle"><i class="icon fa fa-desktop fa-fw"></i>
+												<?php echo $row['subcategory']; ?></a>
 										<?php } ?>
 
 									</li>
@@ -144,16 +144,16 @@ if (isset($_GET['pid']) && $_GET['action'] == "wishlist") {
 									<?php $sql = mysqli_query($con, "select id,categoryName  from category");
 									while ($row = mysqli_fetch_array($sql)) {
 										?>
-												<div class="accordion">
-													<div class="accordion-group">
-														<div class="accordion-heading">
-															<a href="category.php?cid=<?php echo $row['id']; ?>"
-																class="accordion-toggle collapsed">
-																<?php echo $row['categoryName']; ?>
-															</a>
-														</div>
-													</div>
+										<div class="accordion">
+											<div class="accordion-group">
+												<div class="accordion-heading">
+													<a href="category.php?cid=<?php echo $row['id']; ?>"
+														class="accordion-toggle collapsed">
+														<?php echo $row['categoryName']; ?>
+													</a>
 												</div>
+											</div>
+										</div>
 									<?php } ?>
 								</div><!-- /.sidebar-widget-body -->
 							</div><!-- /.sidebar-widget -->
@@ -184,9 +184,9 @@ if (isset($_GET['pid']) && $_GET['action'] == "wishlist") {
 									while ($row = mysqli_fetch_array($sql)) {
 										?>
 
-												<div class="excerpt hidden-sm hidden-md">
-													<?php echo htmlentities($row['categoryName']); ?>
-												</div>
+										<div class="excerpt hidden-sm hidden-md">
+											<?php echo htmlentities($row['categoryName']); ?>
+										</div>
 									<?php } ?>
 
 								</div><!-- /.caption -->
@@ -204,79 +204,80 @@ if (isset($_GET['pid']) && $_GET['action'] == "wishlist") {
 										$num = mysqli_num_rows($ret);
 										if ($num > 0) {
 											while ($row = mysqli_fetch_array($ret)) { ?>
-																<div class="col-sm-6 col-md-4 wow fadeInUp">
-																	<div class="products">
-																		<div class="product">
-																			<div class="product-image">
-																				<div class="image">
-																					<a
-																						href="product-details.php?pid=<?php echo htmlentities($row['id']); ?>"><img
-																							src="assets/images/blank.gif"
-																							data-echo="admin/productimages/<?php echo htmlentities($row['id']); ?>/<?php echo htmlentities($row['productImage1']); ?>"
-																							alt="" width="200" height="300"></a>
-																				</div><!-- /.image -->
-																			</div><!-- /.product-image -->
+												<div class="col-sm-6 col-md-4 wow fadeInUp">
+													<div class="products">
+														<div class="product">
+															<div class="product-image">
+																<div class="image">
+																	<a
+																		href="product-details.php?pid=<?php echo htmlentities($row['id']); ?>"><img
+																			src="assets/images/blank.gif"
+																			data-echo="admin/productimages/<?php echo htmlentities($row['id']); ?>/<?php echo htmlentities($row['productImage1']); ?>"
+																			alt="" width="200" height="300"></a>
+																</div><!-- /.image -->
+															</div><!-- /.product-image -->
 
 
-																			<div class="product-info text-left">
-																				<h3 class="name"><a
-																						href="product-details.php?pid=<?php echo htmlentities($row['id']); ?>"><?php echo htmlentities($row['productName']); ?></a>
-																				</h3>
-																				<div class="rating rateit-small"></div>
-																				<div class="description"></div>
+															<div class="product-info text-left">
+																<h3 class="name"><a
+																		href="product-details.php?pid=<?php echo htmlentities($row['id']); ?>"><?php echo htmlentities($row['productName']); ?></a>
+																</h3>
+																<div class="rating rateit-small"></div>
+																<div class="description"></div>
 
-																				<div class="product-price">
-																					<span class="price">
-																						Rs. <?php echo htmlentities($row['productPrice']); ?>
-																					</span>
-																					<span class="price-before-discount">Rs.
-																						<?php echo htmlentities($row['productPriceBeforeDiscount']); ?></span>
+																<div class="product-price">
+																	<span class="price">
+																		Rs.
+																		<?php echo number_format(htmlentities($row['productPrice']), 0, ',', '.'); ?>
+																	</span>
+																	<span class="price-before-discount">Rs.
+																		<?php echo number_format(htmlentities($row['productPriceBeforeDiscount']), 0, ',', '.'); ?></span>
 
-																				</div><!-- /.product-price -->
+																</div><!-- /.product-price -->
 
-																			</div><!-- /.product-info -->
-																			<div class="cart clearfix animate-effect">
-																				<div class="action">
-																					<ul class="list-unstyled">
-																						<li class="add-cart-button btn-group">
+															</div><!-- /.product-info -->
+															<div class="cart clearfix animate-effect">
+																<div class="action">
+																	<ul class="list-unstyled">
+																		<li class="add-cart-button btn-group">
 
-																							<?php if ($row['productAvailability'] == 'In Stock') { ?>
-																										<button class="btn btn-primary icon"
-																											data-toggle="dropdown" type="button">
-																											<i class="fa fa-shopping-cart"></i>
-																										</button>
-																										<a
-																											href="category.php?page=product&action=add&id=<?php echo $row['id']; ?>">
-																											<button class="btn btn-primary"
-																												type="button">Thêm vào giỏ hàng</button></a>
-																							<?php } else { ?>
-																										<div class="action" style="color:red">Hết hàng
-																										</div>
-																							<?php } ?>
+																			<?php if ($row['productAvailability'] == 'In Stock') { ?>
+																				<button class="btn btn-primary icon"
+																					data-toggle="dropdown" type="button">
+																					<i class="fa fa-shopping-cart"></i>
+																				</button>
+																				<a
+																					href="category.php?page=product&action=add&id=<?php echo $row['id']; ?>">
+																					<button class="btn btn-primary"
+																						type="button">Thêm vào giỏ hàng</button></a>
+																			<?php } else { ?>
+																				<div class="action" style="color:red">Hết hàng
+																				</div>
+																			<?php } ?>
 
-																						</li>
+																		</li>
 
-																						<li class="lnk wishlist">
-																							<a class="add-to-cart"
-																								href="category.php?pid=<?php echo htmlentities($row['id']) ?>&&action=wishlist"
-																								title="Wishlist">
-																								<i class="icon fa fa-heart"></i>
-																							</a>
-																						</li>
+																		<li class="lnk wishlist">
+																			<a class="add-to-cart"
+																				href="category.php?pid=<?php echo htmlentities($row['id']) ?>&&action=wishlist"
+																				title="Wishlist">
+																				<i class="icon fa fa-heart"></i>
+																			</a>
+																		</li>
 
 
-																					</ul>
-																				</div><!-- /.action -->
-																			</div><!-- /.cart -->
-																		</div>
-																	</div>
-																</div>
-													<?php }
+																	</ul>
+																</div><!-- /.action -->
+															</div><!-- /.cart -->
+														</div>
+													</div>
+												</div>
+											<?php }
 										} else { ?>
 
-													<div class="col-sm-6 col-md-4 wow fadeInUp">
-														<h3>Không tìm thấy sản phẩm!</h3>
-													</div>
+											<div class="col-sm-6 col-md-4 wow fadeInUp">
+												<h3>Không tìm thấy sản phẩm!</h3>
+											</div>
 
 										<?php } ?>
 
