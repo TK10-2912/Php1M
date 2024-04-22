@@ -1,12 +1,15 @@
 <?php
 session_start();
+if (!isset($_SESSION['listId'])) {
+	$_SESSION['listId'] = array();
+}
 error_reporting(0);
-include ('includes/config.php');
+include('includes/config.php');
 if (strlen($_SESSION['login']) == 0) {
 	header('location:login.php');
 } else {
 
-	?>
+?>
 
 	<!DOCTYPE html>
 	<html lang="en">
@@ -63,9 +66,9 @@ if (strlen($_SESSION['login']) == 0) {
 
 		<!-- ============================================== HEADER ============================================== -->
 		<header class="header-style-1">
-			<?php include ('includes/top-header.php'); ?>
-			<?php include ('includes/main-header.php'); ?>
-			<?php include ('includes/menu-bar.php'); ?>
+			<?php include('includes/top-header.php'); ?>
+			<?php include('includes/main-header.php'); ?>
+			<?php include('includes/menu-bar.php'); ?>
 		</header>
 		<!-- ============================================== HEADER : END ============================================== -->
 		<div class="breadcrumb">
@@ -104,31 +107,31 @@ if (strlen($_SESSION['login']) == 0) {
 
 										<tbody>
 
-											<?php $query = mysqli_query($con, "select products.productImage1 as pimg1,products.productName as pname,products.id as proid,orders.productId as opid,orders.quantity as qty,products.productPrice as pprice,products.shippingCharge as shippingcharge,orders.paymentMethod as paym,orders.orderDate as odate,orders.id as orderid from orders join products on orders.productId=products.id where orders.userId='" . $_SESSION['id'] . "' and orders.paymentMethod is not null");
+											<?php $query = mysqli_query($con, "select orders.id as orders_id, products.productImage1 as pimg1,products.productName as pname,products.id as proid,orders.productId as opid,orders.quantity as qty,products.productPrice as pprice,products.shippingCharge as shippingcharge,orders.paymentMethod as paym,orders.orderDate as odate,orders.id as orderid from orders join products on orders.productId=products.id where orders.userId='" . $_SESSION['id'] . "' and orders.paymentMethod = 'Internet Banking' and orders.orderStatus IS NULL");
 											$cnt = 1;
+											$listId = array();
 											while ($row = mysqli_fetch_array($query)) {
+												$listId[] = $row["orders_id"];
 												$qty = $row['qty'];
 												$price = $row['pprice'];
 												$shippcharge = $row['shippingcharge'];
 												$subtotal = ($qty * $price) + $shippcharge; // Tính tổng tiền cho mỗi hàng
 												$total += $subtotal; // Cộng vào tổng số tiền
-										
+
 												// Định dạng tiền cho các cột
 												$formatted_price = number_format($price, 0, ',', '.');
 												$formatted_shipping_charge = number_format($shippcharge, 0, ',', '.');
 												$formatted_subtotal = number_format($subtotal, 0, ',', '.');
-												?>
+											?>
 												<tr>
 													<td><?php echo $cnt; ?></td>
 													<td class="cart-image">
 														<a class="entry-thumbnail" href="detail.html">
-															<img src="admin/productimages/<?php echo $row['proid']; ?>/<?php echo $row['pimg1']; ?>"
-																alt="" width="84" height="146">
+															<img src="admin/productimages/<?php echo $row['proid']; ?>/<?php echo $row['pimg1']; ?>" alt="" width="84" height="146">
 														</a>
 													</td>
 													<td class="cart-product-name-info">
-														<h4 class='cart-product-description'><a
-																href="product-details.php?pid=<?php echo $row['opid']; ?>">
+														<h4 class='cart-product-description'><a href="product-details.php?pid=<?php echo $row['opid']; ?>">
 																<?php echo $row['pname']; ?></a></h4>
 
 
@@ -143,8 +146,9 @@ if (strlen($_SESSION['login']) == 0) {
 													<td class="cart-product-sub-total"><?php echo $row['paym']; ?> </td>
 													<td class="cart-product-sub-total"><?php echo $row['odate']; ?> </td>
 												</tr>
-												<?php $cnt = $cnt + 1;
-											} ?>
+											<?php $cnt = $cnt + 1;
+											}
+											$_SESSION['listId'] = $listId; ?>
 
 										</tbody><!-- /tbody -->
 									</table><!-- /table -->
@@ -153,8 +157,7 @@ if (strlen($_SESSION['login']) == 0) {
 							<div style='text-align:right;margin-top:20px'>
 								<form role="form" method="post" action="vnpay.php">
 									<input type="hidden" name="money" value="<?php echo $total ?>" />
-									<button type=" submit" name="submit" name="redirect"
-										class="btn-upper btn btn-primary checkout-page-button">Thanh toán VnPay</button>
+									<button type=" submit" name="submit" name="redirect" class="btn-upper btn btn-primary checkout-page-button">Thanh toán VnPay</button>
 								</form>
 							</div>
 						</div>
@@ -163,11 +166,11 @@ if (strlen($_SESSION['login']) == 0) {
 				</div> <!-- /.row -->
 				</form>
 				<!-- ============================================== BRANDS CAROUSEL ============================================== -->
-				<?php echo include ('includes/brands-slider.php'); ?>
+				<?php echo include('includes/brands-slider.php'); ?>
 				<!-- ============================================== BRANDS CAROUSEL : END ============================================== -->
 			</div><!-- /.container -->
 		</div><!-- /.body-content -->
-		<?php include ('includes/footer.php'); ?>
+		<?php include('includes/footer.php'); ?>
 
 		<script src="assets/js/jquery-1.11.1.min.js"></script>
 
@@ -190,17 +193,17 @@ if (strlen($_SESSION['login']) == 0) {
 		<script src="switchstylesheet/switchstylesheet.js"></script>
 
 		<script>
-			$(document).ready(function () {
+			$(document).ready(function() {
 				$(".changecolor").switchstylesheet({
 					seperator: "color"
 				});
-				$('.show-theme-options').click(function () {
+				$('.show-theme-options').click(function() {
 					$(this).parent().toggleClass('open');
 					return false;
 				});
 			});
 
-			$(window).bind("load", function () {
+			$(window).bind("load", function() {
 				$('.show-theme-options').delay(2000).trigger('click');
 			});
 		</script>

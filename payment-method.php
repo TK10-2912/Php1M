@@ -100,11 +100,7 @@ if (strlen($_SESSION['login']) == 0) {
 												toán khi nhận hàng (COD)
 												<input type="radio" name="paymethod" value="Internet Banking"> Chuyển khoản
 												ngân hàng
-												<input type="radio" name="paymethod" value="Debit / Credit card"> Thẻ ghi nợ
-												/ Thẻ tín dụng <br /><br />
-												<input type="submit" value="Gửi" name="submit" class="btn btn-primary">
-
-
+												<input type="submit" value="Thanh toán" name="submit" class="btn btn-primary">
 											</form>
 										</div>
 										<!-- panel-body  -->
