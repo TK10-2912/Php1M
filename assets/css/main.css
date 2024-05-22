@@ -2394,10 +2394,10 @@ a {
   font-size: 35px;
 }
 .info-boxes .info-box .info-box-heading {
-  font-size: 35px;
-  line-height: 30px;
+  font-size: 20px;
+  line-height: 20px;
   text-transform: uppercase;
-  font-family: 'BebasNeueBold';
+  font-family: 'Roboto';
   margin-top: 5px;
 }
 .info-boxes .info-box .info-box-heading.orange {

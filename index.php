@@ -116,8 +116,8 @@ if (isset($_GET['action']) && $_GET['action'] == "add") {
 						<div class="info-boxes wow fadeInUp">
 							<div class="info-boxes-inner">
 								<div class="row">
-									<div class="col-md-6 col-sm-4 col-lg-4">
-										<div class="info-box">
+									<div class="col-md-6 col-sm-4 col-lg-4" style="height:119px ">
+										<div class="info-box" style="height:100% ">
 											<div class="row">
 												<div class="col-xs-2">
 													<i class="icon fa fa-dollar"></i>
@@ -130,8 +130,8 @@ if (isset($_GET['action']) && $_GET['action'] == "add") {
 										</div>
 									</div><!-- .col -->
 
-									<div class="hidden-md col-sm-4 col-lg-4">
-										<div class="info-box">
+									<div class="hidden-md col-sm-4 col-lg-4" style="height:119px ">
+										<div class="info-box" style="height:100% ">
 											<div class="row">
 												<div class="col-xs-2">
 													<i class="icon fa fa-truck"></i>
@@ -144,8 +144,8 @@ if (isset($_GET['action']) && $_GET['action'] == "add") {
 										</div>
 									</div><!-- .col -->
 
-									<div class="col-md-6 col-sm-4 col-lg-4">
-										<div class="info-box">
+									<div class="col-md-6 col-sm-4 col-lg-4" style="height:119px ">
+										<div class="info-box" style="height:100% ">
 											<div class="row">
 												<div class="col-xs-2">
 													<i class="icon fa fa-gift"></i>

@@ -17,7 +17,7 @@ if (strlen($_SESSION['alogin']) == 0) {
 
 	if (isset($_GET['del'])) {
 		mysqli_query($con, "delete from category where id = '" . $_GET['id'] . "'");
-		$_SESSION['delmsg'] = "Category deleted !!";
+		$_SESSION['delmsg'] = "Danh mục đã bị xoá";
 	}
 
 	?>

@@ -70,39 +70,39 @@
                         </div><!-- /.module-heading -->
 
                         <div class="module-body outer-top-xs">
-                            <ul class="toggle-footer" style="">
-                                <li class="media">
+                            <ul class="toggle-footer" >
+                                <li class="media" style="display: flex; align-items: center">
                                     <div class="pull-left">
                                         <span class="icon fa-stack fa-lg">
                                             <i class="fa fa-circle fa-stack-2x"></i>
                                             <i class="fa fa-map-marker fa-stack-1x fa-inverse"></i>
                                         </span>
                                     </div>
-                                    <div class="media-body">
+                                    <div class="media-body" style="display: flex; align-items: center">
                                         <p>Hà nội</p>
                                     </div>
                                 </li>
 
-                                <li class="media">
+                                <li class="media " style="display: flex; align-items: center">
                                     <div class="pull-left">
                                         <span class="icon fa-stack fa-lg">
                                             <i class="fa fa-circle fa-stack-2x"></i>
                                             <i class="fa fa-mobile fa-stack-1x fa-inverse"></i>
                                         </span>
                                     </div>
-                                    <div class="media-body">
+                                    <div class="media-body" style="display: flex; align-items: center">
                                         <p>0132465798</p>
                                     </div>
                                 </li>
 
-                                <li class="media">
+                                <li class="media" style="display: flex; align-items: center">
                                     <div class="pull-left">
                                         <span class="icon fa-stack fa-lg">
                                             <i class="fa fa-circle fa-stack-2x"></i>
                                             <i class="fa fa-envelope fa-stack-1x fa-inverse"></i>
                                         </span>
                                     </div>
-                                    <div class="media-body">
+                                    <div class="media-body" style="display: flex; align-items: center">
                                         <span><a href="#">admin@digihand.co.in</a></span>
                                     </div>
                                 </li>

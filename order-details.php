@@ -1,7 +1,7 @@
 <?php
 session_start();
 error_reporting(0);
-include ('includes/config.php');
+include('includes/config.php');
 ?>
 
 <!DOCTYPE html>
@@ -42,13 +42,13 @@ include ('includes/config.php');
 	<link rel="shortcut icon" href="assets/images/favicon.ico">
 	<script language="javascript" type="text/javascript">
 		var popUpWin = 0;
+
 		function popUpWindow(URLStr, left, top, width, height) {
 			if (popUpWin) {
 				if (!popUpWin.closed) popUpWin.close();
 			}
 			popUpWin = open(URLStr, 'popUpWin', 'toolbar=no,location=no,directories=no,status=no,menubar=no,scrollbars=yes,resizable=no,copyhistory=yes,width=' + 600 + ',height=' + 600 + ',left=' + left + ', top=' + top + ',screenX=' + left + ',screenY=' + top + '');
 		}
-
 	</script>
 
 </head>
@@ -59,9 +59,9 @@ include ('includes/config.php');
 
 	<!-- ============================================== HEADER ============================================== -->
 	<header class="header-style-1">
-		<?php include ('includes/top-header.php'); ?>
-		<?php include ('includes/main-header.php'); ?>
-		<?php include ('includes/menu-bar.php'); ?>
+		<?php include('includes/top-header.php'); ?>
+		<?php include('includes/main-header.php'); ?>
+		<?php include('includes/menu-bar.php'); ?>
 	</header>
 	<!-- ============================================== HEADER : END ============================================== -->
 	<div class="breadcrumb">
@@ -109,18 +109,16 @@ include ('includes/config.php');
 											$query = mysqli_query($con, "select products.productImage1 as pimg1,products.productName as pname,orders.productId as opid,orders.quantity as qty,products.productPrice as pprice,orders.paymentMethod as paym,orders.orderDate as odate,orders.id as orderid from orders join products on orders.productId=products.id where orders.id='$orderid' and orders.paymentMethod is not null");
 											$cnt = 1;
 											while ($row = mysqli_fetch_array($query)) {
-												?>
+										?>
 												<tr>
 													<td><?php echo $cnt; ?></td>
 													<td class="cart-image">
 														<a class="entry-thumbnail" href="detail.html">
-															<img src="admin/productimages/<?php echo $row['pname']; ?>/<?php echo $row['pimg1']; ?>"
-																alt="" width="84" height="146">
+															<img src="admin/productimages/<?php echo $row['pname']; ?>/<?php echo $row['pimg1']; ?>" alt="" width="84" height="146">
 														</a>
 													</td>
 													<td class="cart-product-name-info">
-														<h4 class='cart-product-description'><a
-																href="product-details.php?pid=<?php echo $row['opid']; ?>">
+														<h4 class='cart-product-description'><a href="product-details.php?pid=<?php echo $row['opid']; ?>">
 																<?php echo $row['pname']; ?></a></h4>
 
 
@@ -135,14 +133,12 @@ include ('includes/config.php');
 													<td class="cart-product-sub-total"><?php echo $row['odate']; ?> </td>
 
 													<td>
-														<a href="javascript:void(0);"
-															onClick="popUpWindow('track-order.php?oid=<?php echo htmlentities($row['orderid']); ?>');"
-															title="Theo dõi đơn hàng">
+														<a href="javascript:void(0);" onClick="popUpWindow('track-order.php?oid=<?php echo htmlentities($row['orderid']); ?>');" title="Theo dõi đơn hàng">
 															Theo dõi
 														</a>
 													</td>
 												</tr>
-												<?php $cnt = $cnt + 1;
+											<?php $cnt = $cnt + 1;
 											}
 										} else { ?>
 											<tr>
@@ -152,19 +148,18 @@ include ('includes/config.php');
 										<?php } ?>
 									</tbody><!-- /tbody -->
 								</table><!-- /table -->
-
+							</form>
 						</div>
 					</div>
 
 				</div><!-- /.shopping-cart -->
 			</div> <!-- /.row -->
-			</form>
 			<!-- ============================================== BRANDS CAROUSEL ============================================== -->
-			<?php echo include ('includes/brands-slider.php'); ?>
+			<?php echo include('includes/brands-slider.php'); ?>
 			<!-- ============================================== BRANDS CAROUSEL : END ============================================== -->
 		</div><!-- /.container -->
 	</div><!-- /.body-content -->
-	<?php include ('includes/footer.php'); ?>
+	<?php include('includes/footer.php'); ?>
 
 	<script src="assets/js/jquery-1.11.1.min.js"></script>
 
@@ -187,15 +182,17 @@ include ('includes/config.php');
 	<script src="switchstylesheet/switchstylesheet.js"></script>
 
 	<script>
-		$(document).ready(function () {
-			$(".changecolor").switchstylesheet({ seperator: "color" });
-			$('.show-theme-options').click(function () {
+		$(document).ready(function() {
+			$(".changecolor").switchstylesheet({
+				seperator: "color"
+			});
+			$('.show-theme-options').click(function() {
 				$(this).parent().toggleClass('open');
 				return false;
 			});
 		});
 
-		$(window).bind("load", function () {
+		$(window).bind("load", function() {
 			$('.show-theme-options').delay(2000).trigger('click');
 		});
 	</script>
