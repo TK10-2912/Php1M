@@ -116,31 +116,33 @@ if (isset($_GET['action']) && $_GET['action'] == "add") {
 						<div class="info-boxes wow fadeInUp">
 							<div class="info-boxes-inner">
 								<div class="row">
-									<div class="col-md-6 col-sm-4 col-lg-4" style="height:119px ">
+									<div class="col-md-6 col-sm-4 col-lg-3" style="height:119px ">
 										<div class="info-box" style="height:100% ">
 											<div class="row">
 												<div class="col-xs-2">
 													<i class="icon fa fa-dollar"></i>
 												</div>
 												<div class="col-xs-10">
-													<h4 class="info-box-heading green">hoàn tiền</h4>
+													<h4 class="info-box-heading green" style="font-family:'Roboto';">
+														hoàn tiền</h4>
 												</div>
 											</div>
 											<h6 class="text">Hoàn trong 30 ngày</h6>
 										</div>
 									</div><!-- .col -->
 
-									<div class="hidden-md col-sm-4 col-lg-4" style="height:119px ">
+									<div class="hidden-md col-sm-4 col-lg-5" style="height:119px ">
 										<div class="info-box" style="height:100% ">
 											<div class="row">
 												<div class="col-xs-2">
 													<i class="icon fa fa-truck"></i>
 												</div>
 												<div class="col-xs-10">
-													<h4 class="info-box-heading orange">miễn phí vận chuyển</h4>
+													<h4 class="info-box-heading orange" style="font-family:'Roboto';">
+														miễn phí vận chuyển</h4>
+													<h6 class="text">Miễn phí lên đến 100.000 đồng</h6>
 												</div>
 											</div>
-											<h6 class="text">Miễn phí lên đến 100.000 đồng</h6>
 										</div>
 									</div><!-- .col -->
 
@@ -151,7 +153,8 @@ if (isset($_GET['action']) && $_GET['action'] == "add") {
 													<i class="icon fa fa-gift"></i>
 												</div>
 												<div class="col-xs-10">
-													<h4 class="info-box-heading red">Siêu sale</h4>
+													<h4 class="info-box-heading red" style="font-family:'Roboto';">Siêu
+														sale</h4>
 												</div>
 											</div>
 											<h6 class="text">Giảm giá 20% tất cả các mặt hàng</h6>
@@ -180,7 +183,7 @@ if (isset($_GET['action']) && $_GET['action'] == "add") {
 					<div class="tab-content outer-top-xs">
 						<div class="tab-pane in active" id="all">
 							<div class="product-slider">
-								<div class="owl-carousel home-owl-carousel custom-carousel owl-theme" data-item="4">
+								<div class="owl-carousel home-owl-carousel custom-carousel owl-theme" data-item="3">
 									<?php
 									$ret = mysqli_query($con, "select * from products");
 									while ($row = mysqli_fetch_array($ret)) {
@@ -193,8 +196,10 @@ if (isset($_GET['action']) && $_GET['action'] == "add") {
 										<div class="item item-carousel">
 											<div class="products">
 
-												<div class="product">
-													<div class="product-image">
+												<div class="product"
+													style="display: flex;align-items: center;flex-direction :column;">
+													<div class="product-image"
+														style="display: flex;justify-content: center;">
 														<div class="image">
 															<a
 																href="product-details.php?pid=<?php echo htmlentities($row['id']); ?>">

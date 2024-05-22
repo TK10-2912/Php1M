@@ -79,7 +79,7 @@ img[src="assets/images/blank.gif"] {
   src: url('../fonts/fjalla/fjallaone-regular.eot') format('embedded-opentype'), url('../fonts/fjalla/fjallaone-regular.woff2') format('woff2'), url('../fonts/fjalla/fjallaone-regular.woff') format('woff'), url('../fonts/fjalla/fjallaone-regular.ttf') format('truetype'), url('../fonts/fjalla/fjallaone-regular.svg#Roboto') format('svg');
 }
 @font-face {
-  font-family: 'BebasNeueBold';
+  font-family: 'Roboto';
   src: url('../fonts/bebas/bebasneuebold.eot');
   src: url('../fonts/bebas/bebasneuebold.eot') format('embedded-opentype'), url('../fonts/bebas/bebasneuebold.woff2') format('woff2'), url('../fonts/bebas/bebasneuebold.woff') format('woff'), url('../fonts/bebas/bebasneuebold.ttf') format('truetype'), url('../fonts/bebas/bebasneuebold.svg#BebasNeueBold') format('svg');
 }
@@ -2683,14 +2683,14 @@ a {
   color: #ff4c4c;
   margin: 0;
   text-transform: uppercase;
-  font-family: 'BebasNeueBold';
+  font-family: 'Roboto';
 }
 .cnt-strip .strip h2 {
   font-size: 45px;
   color: #f39c12;
   margin: 0;
   text-transform: uppercase;
-  font-family: 'BebasNeueBold';
+  font-family: 'Roboto';
 }
 .cnt-strip .strip h2 .shopping-needs {
   font-family: 'BebasNeueRegular';
@@ -2809,7 +2809,7 @@ a {
 }
 .megamenu-banner h2 {
   font-size: 40px;
-  font-family: 'BebasNeueBold';
+  font-family: 'Roboto';
 }
 .wide-banner-4 .cnt-strip .strip h1 {
   font-size: 50px;

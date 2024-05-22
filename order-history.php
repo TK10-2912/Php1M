@@ -91,11 +91,13 @@ if (strlen($_SESSION['login']) == 0) {
 										<thead>
 											<tr>
 												<th class="cart-romove item">#</th>
+												<!-- <th class="cart-romove item">Id</th> -->
 												<th class="cart-description item">Hình ảnh</th>
 												<th class="cart-product-name item">Tên sản phẩm</th>
 
 												<th class="cart-qty item">Số lượng</th>
 												<th class="cart-sub-total item">Giá mỗi đơn vị</th>
+												<th class="cart-sub-total item">Phí ship</th>
 												<th class="cart-total item">Tổng cộng</th>
 												<th class="cart-total item">Phương thức thanh toán</th>
 												<th class="cart-description item">Ngày đặt hàng</th>
@@ -106,12 +108,13 @@ if (strlen($_SESSION['login']) == 0) {
 
 										<tbody>
 
-											<?php $query = mysqli_query($con, "select products.productImage1 as pimg1,products.productName as pname,products.id as proid,orders.productId as opid,orders.quantity as qty,products.productPrice as pprice,products.shippingCharge as shippingcharge,orders.paymentMethod as paym,orders.orderDate as odate,orders.id as orderid from orders join products on orders.productId=products.id where orders.userId='" . $_SESSION['id'] . "' and orders.paymentMethod = 'COD' and orders.orderStatus IS NULL");
+											<?php $query = mysqli_query($con, "select products.productImage1 as pimg1,products.productName as pname,products.id as proid,orders.productId as opid,orders.userId as orderID,orders.quantity as qty,products.productPrice as pprice,products.shippingCharge as shippingcharge,orders.paymentMethod as paym,orders.orderDate as odate,orders.id as orderid from orders join products on orders.productId=products.id where orders.userId='" . $_SESSION['id'] . "'");
 											$cnt = 1;
 											while ($row = mysqli_fetch_array($query)) {
 												?>
 												<tr>
 													<td><?php echo $cnt; ?></td>
+													<!-- <td><?php $ids = $row['orderID']; ?></td> -->
 													<td class="cart-image">
 														<a class="entry-thumbnail" href="detail.html">
 															<img src="admin/productimages/<?php echo $row['proid']; ?>/<?php echo $row['pimg1']; ?>"

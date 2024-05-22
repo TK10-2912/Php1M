@@ -29,7 +29,9 @@ $oid = intval($_GET['oid']);
 			<table width="100%" border="0" cellspacing="0" cellpadding="0">
 				<tr height="50">
 					<td colspan="2" class="fontkink2" style="padding-left:0px;">
-						<div class="fontpink2"> <b>Chi tiết đơn hàng!</b></div>
+						<div class="fontpink2" style="text-align:center;">
+							<h2>Chi tiết đơn hàng!</h2>
+						</div>
 					</td>
 				</tr>
 				<tr height="30">
@@ -63,7 +65,7 @@ $oid = intval($_GET['oid']);
 				} else {
 					?>
 					<tr>
-						<td colspan="2">Đơn hàng chưa được xử lý</td>
+						<td colspan="2" style="text-align:center;"><b>Đơn hàng chưa được xử lý</b></td>
 					</tr>
 				<?php }
 				$st = 'Đã giao hàng';
@@ -73,8 +75,9 @@ $oid = intval($_GET['oid']);
 				}
 				if ($st == $currrentSt) { ?>
 					<tr>
-						<td colspan="2"><b>
-								Đã giao hàng thành công </b></td>
+						<td colspan="2" style="text-align:center;">
+							<h2>Đã giao hàng thành công </h2>
+						</td>
 					<?php }
 
 				?>

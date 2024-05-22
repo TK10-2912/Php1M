@@ -70,28 +70,28 @@
                         </div><!-- /.module-heading -->
 
                         <div class="module-body outer-top-xs">
-                            <ul class="toggle-footer" >
-                                <li class="media" style="display: flex; align-items: center">
+                            <ul class="toggle-footer">
+                                <li class="media" style="display: flex; align-items: baseline">
                                     <div class="pull-left">
                                         <span class="icon fa-stack fa-lg">
                                             <i class="fa fa-circle fa-stack-2x"></i>
                                             <i class="fa fa-map-marker fa-stack-1x fa-inverse"></i>
                                         </span>
                                     </div>
-                                    <div class="media-body" style="display: flex; align-items: center">
+                                    <div class="media-body" style="display: flex; align-items: baseline">
                                         <p>Hà nội</p>
                                     </div>
                                 </li>
 
-                                <li class="media " style="display: flex; align-items: center">
+                                <li class="media " style="display: flex; align-items: baseline">
                                     <div class="pull-left">
                                         <span class="icon fa-stack fa-lg">
                                             <i class="fa fa-circle fa-stack-2x"></i>
                                             <i class="fa fa-mobile fa-stack-1x fa-inverse"></i>
                                         </span>
                                     </div>
-                                    <div class="media-body" style="display: flex; align-items: center">
-                                        <p>0132465798</p>
+                                    <div class="media-body" style="display: flex; align-items: baseline">
+                                        <p>0132.465.798</p>
                                     </div>
                                 </li>
 

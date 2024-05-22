@@ -12,7 +12,7 @@ if (strlen($_SESSION['alogin']) == 0) {
 
     $query = mysqli_query($con, "insert into ordertrackhistory(orderId,status,remark) values('$oid','$status','$remark')");
     $sql = mysqli_query($con, "update orders set orderStatus='$status' where id='$oid'");
-    echo "<script>alert('Order updated sucessfully...');</script>";
+    echo "<script>alert('Cập nhật thành công...');</script>";
     //}
   }
 
@@ -33,25 +33,24 @@ if (strlen($_SESSION['alogin']) == 0) {
 
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
-    <title>Update Compliant</title>
+    <title>Cập nhật đơn hàng</title>
     <link href="style.css" rel="stylesheet" type="text/css" />
     <link href="anuj.css" rel="stylesheet" type="text/css">
   </head>
 
   <body>
-
     <div style="margin-left:50px;">
       <form name="updateticket" id="updateticket" method="post">
         <table width="100%" border="0" cellspacing="0" cellpadding="0">
 
           <tr height="50">
             <td colspan="2" class="fontkink2" style="padding-left:0px;">
-              <div class="fontpink2"> <b>Update Order !</b></div>
+              <div class="fontpink2"> <b>Cập nhật đơn hàng!</b></div>
             </td>
 
           </tr>
           <tr height="30">
-            <td class="fontkink1"><b>order Id:</b></td>
+            <td class="fontkink1"><b>Mã đơn hàng:</b></td>
             <td class="fontkink"><?php echo $oid; ?></td>
           </tr>
           <?php
@@ -59,21 +58,18 @@ if (strlen($_SESSION['alogin']) == 0) {
           while ($row = mysqli_fetch_array($ret)) {
             ?>
 
-
-
             <tr height="20">
-              <td class="fontkink1"><b>At Date:</b></td>
+              <td class="fontkink1"><b>Vào ngày:</b></td>
               <td class="fontkink"><?php echo $row['postingDate']; ?></td>
             </tr>
             <tr height="20">
-              <td class="fontkink1"><b>Status:</b></td>
+              <td class="fontkink1"><b>Trạng thái:</b></td>
               <td class="fontkink"><?php echo $row['status']; ?></td>
             </tr>
             <tr height="20">
-              <td class="fontkink1"><b>Remark:</b></td>
+              <td class="fontkink1"><b>Ghi chú:</b></td>
               <td class="fontkink"><?php echo $row['remark']; ?></td>
             </tr>
-
 
             <tr>
               <td colspan="2">
@@ -82,7 +78,7 @@ if (strlen($_SESSION['alogin']) == 0) {
             </tr>
           <?php } ?>
           <?php
-          $st = 'Delivered';
+          $st = 'Đã giao hàng';
           $rt = mysqli_query($con, "SELECT * FROM orders WHERE id='$oid'");
           while ($num = mysqli_fetch_array($rt)) {
             $currrentSt = $num['orderStatus'];
@@ -90,23 +86,23 @@ if (strlen($_SESSION['alogin']) == 0) {
           if ($st == $currrentSt) { ?>
             <tr>
               <td colspan="2"><b>
-                  Product Delivered </b></td>
+                  Sản phẩm đã được giao </b></td>
             <?php } else {
             ?>
 
             <tr height="50">
-              <td class="fontkink1">Status: </td>
+              <td class="fontkink1">Trạng thái: </td>
               <td class="fontkink"><span class="fontkink1">
                   <select name="status" class="fontkink" required="required">
-                    <option value="">Select Status</option>
-                    <option value="in Process">In Process</option>
-                    <option value="Delivered">Delivered</option>
+                    <option value="">Chọn trạng thái</option>
+                    <option value="in Process">Đang xử lý</option>
+                    <option value="Delivered">Đã giao hàng</option>
                   </select>
                 </span></td>
             </tr>
 
             <tr style=''>
-              <td class="fontkink1">Remark:</td>
+              <td class="fontkink1">Ghi chú:</td>
               <td class="fontkink" align="justify"><span class="fontkink">
                   <textarea cols="50" rows="7" name="remark" required="required"></textarea>
                 </span></td>
@@ -117,9 +113,10 @@ if (strlen($_SESSION['alogin']) == 0) {
             </tr>
             <tr>
               <td class="fontkink"> </td>
-              <td class="fontkink"> <input type="submit" name="submit2" value="update" size="40" style="cursor: pointer;" />
+              <td class="fontkink"> <input type="submit" name="submit2" value="Cập nhật" size="40"
+                  style="cursor: pointer;" />
                 &nbsp;&nbsp;
-                <input name="Submit2" type="submit" class="txtbox4" value="Close this Window " onClick="return f2();"
+                <input name="Submit2" type="submit" class="txtbox4" value="Đóng cửa sổ này" onClick="return f2();"
                   style="cursor: pointer;" />
               </td>
             </tr>
@@ -127,7 +124,6 @@ if (strlen($_SESSION['alogin']) == 0) {
         </table>
       </form>
     </div>
-
   </body>
 
   </html>
