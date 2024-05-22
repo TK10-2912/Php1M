@@ -1,19 +1,15 @@
 <?php
-echo($_GET['vnp_TransactionStatus']);
 session_start();
 error_reporting(0);
 include('includes/config.php');
 if (strlen($_SESSION['login']) == 0) {
     header('location:login.php');
-} else {
-    if($_GET['vnp_TransactionStatus'] == '02'){
-        mysqli_query($con, "DELETE FROM orders WHERE id IN ($listIdString)");
-        header('location:vnpay_lost.php');
-    }
-    if (isset($_SESSION['listId']) && !empty($_SESSION['listId'])) {
-        $listIdString = implode(",", $_SESSION['listId']);
-        mysqli_query($con, "UPDATE orders SET orderStatus='Delivered' WHERE id IN ($listIdString)");
-    }
+}
+//  else {
+//     if (isset($_SESSION['listId']) && !empty($_SESSION['listId'])) {
+//         $listIdString = implode(",", $_SESSION['listId']);
+//         mysqli_query($con, "UPDATE orders SET orderStatus='Delivered' WHERE id IN ($listIdString)");
+//     }
 ?>
     <!DOCTYPE html>
     <html lang="en">
@@ -66,7 +62,7 @@ if (strlen($_SESSION['login']) == 0) {
             <div class="container">
                 <div class="checkout-box faq-page inner-bottom-sm">
                     <div class="row" style="display:flex; justify-content: center;">
-                            <a href="index.php" style="font-size: 50px;">Thanh toán thành công, Tiếp tục mua hàng</a>
+                            <a href="index.php" style="font-size: 50px;">Thanh toán không thành công, Trở về trang chủ</a>
                 </div><!-- /.checkout-box -->
                 <!-- ============================================== BRANDS CAROUSEL ============================================== -->
                 <?php echo include('includes/brands-slider.php'); ?>
@@ -116,4 +112,4 @@ if (strlen($_SESSION['login']) == 0) {
     </body>
 
     </html>
-<?php } ?>
+<?php  ?>
